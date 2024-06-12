@@ -8,10 +8,34 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        colors: {
+          teal: {
+            50: "#EAEFF0",
+            100: "#EAEFF0",
+            200: "#0EB87A",
+            300: "#0A8871",
+            400: "#11BE7F",
+          },
+          gray: {
+            50: "#F7F7F8",
+            100: "#EAEFF0",
+            200: "#D4D5D6",
+            300: "#A1A3A7",
+            400: "#646B80",
+            500: "#353A49",
+            600: "#27272E",
+            700: "#171717",
+            800: "#EBEBEB94",
+          },
+        },
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "container-1": "url('/asset/banner/container-1.png')",
+        "container-2": "url('/asset/banner/container-2.png')",
       },
     },
   },
