@@ -143,12 +143,8 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
         } absolute min-w-full backdrop-blur-xl bg-white/30  top-full ps-4 pe-5 py-3 rounded-lg border border-solid border-gray-300`}
       >
         {options.map((flag, i2) => (
-          <section className="ps-2 pe-8 py-2">
-            <Selecteditem
-              onClick={() => handleSelectItem(flag)}
-              {...flag}
-              key={i2}
-            />
+          <section key={i2 + 1} className="ps-2 pe-8 py-2">
+            <Selecteditem onClick={() => handleSelectItem(flag)} {...flag} />
           </section>
         ))}
       </div>

@@ -49,7 +49,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
           </p>
         </section>
         <section
-          className={`grid  xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-x-4`}
+          className={`grid  cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-x-4`}
         >
           <div
             className={`w-full flex flex-col justify-center items-center gap-y-4 animate__animated animation-delay-1000 ${

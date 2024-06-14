@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
+
 import person1 from "/public/asset/banner/person1.png";
 import person2 from "/public/asset/banner/person2.png";
 import person3 from "/public/asset/banner/person3.png";
@@ -29,8 +30,9 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
             for vegetables is
           </p>
         </section>
-        <section className="flex gap-x-3 justify-center pt-16">
+        <section className="flex gap-x-3 justify-center pt-16 relative">
           <Image
+            unoptimized
             className={`rounded-[15px] mt-16 animate__animated animation-delay-900 ${
               inView1 && "animate__fadeInUp"
             }`}
@@ -38,6 +40,7 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
             {...person4}
           />
           <Image
+            unoptimized
             className={`rounded-[15px] animate__animated animation-delay-1000 ${
               inView1 && "animate__fadeInUp"
             }`}
@@ -45,6 +48,7 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
             {...person3}
           />
           <Image
+            unoptimized
             className={`rounded-[15px] mt-16 animate__animated animation-delay-1000 ${
               inView1 && "animate__fadeInUp"
             }`}
@@ -52,6 +56,7 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
             {...person2}
           />
           <Image
+            unoptimized
             className={`rounded-[15px] animate__animated animation-delay-900 ${
               inView1 && "animate__fadeInUp"
             }`}
@@ -62,6 +67,14 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
       </div>
     </Container1>
   );
+};
+
+interface ImageContainerProps {
+  type: "con-1";
+}
+
+const ImageContainer: FunctionComponent<ImageContainerProps> = () => {
+  return <div></div>;
 };
 
 export default Team;

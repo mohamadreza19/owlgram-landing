@@ -43,6 +43,23 @@ const config: Config = {
         "container-2": "url('/asset/banner/container-2.png')",
       },
     },
+    screens: {
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "cs-1": "1412px",
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
   },
   plugins: [],
 };

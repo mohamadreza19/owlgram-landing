@@ -6,6 +6,8 @@ import { useInView } from "react-intersection-observer";
 
 interface ExperienceProps extends SegmentComponentProps {}
 
+import BigPhone from "/public/asset/banner/big-phone.png";
+
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
   appHeaderRef,
@@ -63,12 +65,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
         </section>
         <section className="w-full pt-4 flex flex-col items-center  relative ">
           <div className="w-fit">
-            <Image
-              className="w-[465px] min-w-[465px] max-w-[465px] h-[733px] !static"
-              fill
-              src={"/asset/banner/big-phone.png"}
-              alt="big-phone"
-            />
+            <Image unoptimized {...BigPhone} alt="big-phone" />
           </div>
 
           <div className="absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center  bg-container-1 bg-no-repeat bg-cover drop-shadow-xl text-sm ">

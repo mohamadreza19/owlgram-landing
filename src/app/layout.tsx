@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import "animate.css/animate.min.css";
-import { Head, Html } from "next/document";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
