@@ -16,7 +16,9 @@ const config: Config = {
             200: "#0EB87A",
             300: "#0A8871",
             400: "#11BE7F",
+            500: "#0C6252",
           },
+
           gray: {
             50: "#F7F7F8",
             100: "#EAEFF0",
@@ -29,6 +31,9 @@ const config: Config = {
             800: "#EBEBEB94",
           },
         },
+        "gray2-500": "#353A49",
+        "teal2-400": "#0A8B73",
+        "teal2-500": "#0C6252",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

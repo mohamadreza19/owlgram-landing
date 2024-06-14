@@ -10,40 +10,18 @@ import {
   useState,
 } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { Container1 } from "../containers";
+import { SegmentComponentProps } from "../../shared";
 
-interface AppHeaderProps {}
+interface AppHeaderProps extends SegmentComponentProps {
+  menu: {
+    id: string;
+    text: string;
+  }[];
+  activeIndex: number;
+}
 type Flag = { src: string; text: string };
 
-const menu = [
-  {
-    href: "/",
-    text: "Home Page",
-  },
-  {
-    href: "/#about",
-    text: "About Owlegram",
-  },
-  {
-    href: "/#services",
-    text: "Services",
-  },
-  {
-    href: "/#team",
-    text: "Team",
-  },
-  {
-    href: "/#download",
-    text: "Download",
-  },
-  {
-    href: "/#FAQ",
-    text: "FAQ",
-  },
-  {
-    href: "/#contact",
-    text: "Contact",
-  },
-];
 const flag: Flag[] = [
   {
     src: "/asset/flag/usa.svg",
@@ -55,11 +33,13 @@ const flag: Flag[] = [
   },
 ];
 
-const AppHeader: FunctionComponent<AppHeaderProps> = () => {
-  const [currentHref, setCurrentHref] = useState("/");
-
-  function handleForceRender(href: string) {
-    setCurrentHref(href);
+const AppHeader: FunctionComponent<AppHeaderProps> = ({
+  id,
+  menu,
+  activeIndex,
+}) => {
+  function handleClick(href: string) {
+    // setCurrentHref(href);
   }
 
   return (
@@ -75,10 +55,10 @@ const AppHeader: FunctionComponent<AppHeaderProps> = () => {
         <ul className="flex">
           {menu.map((item, i) => (
             <LinkPagination
-              onClick={() => handleForceRender(item.href)}
-              currentHref={currentHref}
+              onClick={() => handleClick(item.id)}
+              isActive={activeIndex === i}
               key={i}
-              href={item.href}
+              href={"/#" + item.id}
             >
               {item.text}
             </LinkPagination>
@@ -88,7 +68,9 @@ const AppHeader: FunctionComponent<AppHeaderProps> = () => {
           <LanguageSelectBox options={flag} />
         </div>
       </header>
-      <div className="w-full h-24 pt-8"></div>
+      <Container1 bg="bg-gray-100">
+        <div id={id} className="w-full h-24 pt-8"></div>
+      </Container1>
     </>
   );
 };
@@ -96,18 +78,17 @@ const AppHeader: FunctionComponent<AppHeaderProps> = () => {
 interface LinkPaginationProps {
   href: string;
   children: ReactNode;
-  currentHref: string;
+  isActive: boolean;
   onClick: () => void;
 }
 
 const LinkPagination: FunctionComponent<LinkPaginationProps> = ({
   href,
   children,
-  currentHref,
+  isActive,
   onClick,
 }) => {
   // console.log(currentHref);
-  const isActive = currentHref === href;
 
   return (
     <li
@@ -115,7 +96,7 @@ const LinkPagination: FunctionComponent<LinkPaginationProps> = ({
         isActive ? "font-semibold" : "font-normal"
       }`}
     >
-      <Point isActive={isActive} />{" "}
+      <Point isActive={isActive} />
       <Link onClick={onClick} href={href}>
         {children}
       </Link>

@@ -7,87 +7,112 @@ import Banner3 from "/public/asset/banner/banner-free-transfer.png";
 import Banner4 from "/public/asset/banner/banner-videoCall.png";
 import Banner5 from "/public/asset/banner/banner-check-out-products.png";
 import Banner6 from "/public/asset/banner/banner-chat.png";
+import { Container1 } from "../containers";
+import { SegmentComponentProps } from "../../shared";
+import { useInView } from "react-intersection-observer";
 
-interface WhyChoseProps {}
+interface WhyChoseProps extends SegmentComponentProps {}
 
-const WhyChose: FunctionComponent<WhyChoseProps> = () => {
+const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
+  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  useEffect(() => {
+    if (inView1) {
+      onView();
+    }
+  }, [inView1]);
   return (
-    <div
-      className="pt-[120px] flex flex-col 
-    "
-    >
-      <section className="flex  flex-col justify-center items-center">
-        <p className="font-normal text-[22px]">One platform for All </p>
-        <p className="font-bold text-[50px]">Why Choose owlegram ?</p>
-        <p className="text-lg font-light text-center w-[733px]">
-          To the home cook, having the right pots and pans is essential for a
-          properly functioning kitchen. You may be wondering what the best pot
-          for vegetables is
-        </p>
-      </section>
-      <section className="pt-[48px]  flex flex-wrap gap-y-4 ">
-        <div className="grid grid-cols-2 gap-x-4">
-          <div className=" max-w-[590px]  max-h-[536px]">
-            <Image
-              unoptimized
-              src={Banner2.src}
-              fill
-              className="!static"
-              alt="banner"
-            />
-          </div>
-          <div className=" max-w-[590px]  max-h-[536px]">
-            <Image
-              unoptimized
-              src={Banner1.src}
-              fill
-              className="!static"
-              alt="banner"
-            />
-          </div>
-        </div>
-
-        <div className="w-full min-w-full h-[296px]">
-          <Image
-            unoptimized
-            src={Banner3.src}
-            fill
-            className="!static"
-            alt="banner"
-          />
-        </div>
-        <div className="grid grid-cols-3 gap-x-4">
-          <div className=" max-w-[383px]  max-h-[300px]">
-            <Image
-              unoptimized
-              src={Banner6.src}
-              fill
-              className="!static"
-              alt="banner"
-            />
+    <Container1 bg="bg-gray-100">
+      <div
+        ref={ref}
+        id={id}
+        className="pt-[120px] flex flex-col 
+  "
+      >
+        <section
+          className={`flex  flex-col justify-center items-center animate__animated animation-delay-600 ${
+            inView1 && "animate__fadeIn"
+          }`}
+        >
+          <p className="font-normal text-[22px]">One platform for All </p>
+          <p className="font-bold text-[50px]">Why Choose owlegram ?</p>
+          <p className="text-lg font-light text-center w-[733px]">
+            To the home cook, having the right pots and pans is essential for a
+            properly functioning kitchen. You may be wondering what the best pot
+            for vegetables is
+          </p>
+        </section>
+        <section className="pt-[48px]  flex flex-wrap gap-y-4 ">
+          <div
+            className={`grid grid-cols-2 gap-x-4 animate__animated animation-delay-900 ${
+              inView1 && "animate__fadeInUp"
+            }`}
+          >
+            <div className=" max-w-[590px]  max-h-[536px]">
+              <Image
+                unoptimized
+                src={Banner2.src}
+                fill
+                className="!static"
+                alt="banner"
+              />
+            </div>
+            <div className=" max-w-[590px]  max-h-[536px]">
+              <Image
+                unoptimized
+                src={Banner1.src}
+                fill
+                className="!static"
+                alt="banner"
+              />
+            </div>
           </div>
 
-          <div className=" max-w-[383px]  max-h-[300px]">
+          <div
+            className={`w-full min-w-full h-[296px]  animate__animated animation-delay-1000 ${
+              inView1 && "animate__fadeInUp"
+            }`}
+          >
             <Image
               unoptimized
-              src={Banner5.src}
+              src={Banner3.src}
               fill
               className="!static"
               alt="banner"
             />
           </div>
-          <div className=" max-w-[383px]  max-h-[300px]">
-            <Image
-              unoptimized
-              src={Banner4.src}
-              fill
-              className="!static"
-              alt="banner"
-            />
+          <div className={"grid grid-cols-3 gap-x-4"}>
+            <div className=" max-w-[383px]  max-h-[300px]">
+              <Image
+                unoptimized
+                src={Banner6.src}
+                fill
+                className="!static"
+                alt="banner"
+              />
+            </div>
+
+            <div className=" max-w-[383px]  max-h-[300px]">
+              <Image
+                unoptimized
+                src={Banner5.src}
+                fill
+                className="!static"
+                alt="banner"
+              />
+            </div>
+            <div className=" max-w-[383px]  max-h-[300px]">
+              <Image
+                unoptimized
+                src={Banner4.src}
+                fill
+                className="!static"
+                alt="banner"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Container1>
   );
 };
 

@@ -1,8 +1,21 @@
 @import url("/visby/fonts/font-face.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
   /* font-family: "Visby Regular"; */
+}
+html {
+  scroll-behavior: smooth;
+}
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+.animation-delay-900 {
+  animation-delay: 0.9s;
+}
+.animation-delay-1000 {
+  animation-delay: 1s;
 }
