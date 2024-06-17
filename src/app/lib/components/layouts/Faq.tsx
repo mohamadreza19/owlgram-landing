@@ -47,7 +47,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
       <div
         ref={ref}
         id={id}
-        className="w-full pt-52 pb-10 flex lg:flex-row  flex-col  justify-between gap-[33px]"
+        className="w-full pt-52 pb-10 flex cs-1:flex-row  flex-col  justify-between gap-[33px]"
       >
         <div>
           <section>
@@ -71,7 +71,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
             ))}
           </section>
         </div>
-        <div className="w-[351px] h-[408px] bg-white rounded-2xl py-[22px] flex flex-col items-center ">
+        <div className="md:w-[351px] w-full md:h-[408px] h-full bg-white rounded-2xl py-[22px] flex flex-col items-center ">
           <div>
             <Image alt="messenger" {...messenger} />
           </div>
@@ -120,7 +120,7 @@ const Modal: FunctionComponent<ModalProps> = ({
   return (
     <div
       onClick={!isActive ? handleOpen : handleClose}
-      className="modal lg:w-[727px] w-[827px] bg-white rounded-[10px] min-h-[57px] px-3 py-4 flex flex-col justify-center cursor-pointer"
+      className="modal lg:w-[727px] md:w-[w-full] w-full  bg-white rounded-[10px] min-h-[57px] px-3 py-4 flex flex-col justify-center cursor-pointer"
     >
       <div className="flex justify-between">
         <p className="text-base font-semibold ">{title}</p>

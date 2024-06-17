@@ -19,3 +19,8 @@ html {
 .animation-delay-1000 {
   animation-delay: 1s;
 }
+@media screen and (max-width: 500px) {
+  .animate__animated {
+    animation: none !important;
+  }
+}

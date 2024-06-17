@@ -34,16 +34,18 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
           }`}
         >
           <p className="font-normal text-[22px]">One platform for All </p>
-          <p className="font-bold text-[50px]">Why Choose owlegram ?</p>
-          <p className="text-lg font-light text-center w-[733px]">
+          <p className="font-bold text-[50px] text-center">
+            Why Choose owlegram ?
+          </p>
+          <p className="text-lg font-light text-center md:w-[733px] w-full">
             To the home cook, having the right pots and pans is essential for a
             properly functioning kitchen. You may be wondering what the best pot
             for vegetables is
           </p>
         </section>
-        <section className="pt-[48px]  flex flex-wrap gap-y-4 ">
+        <section className="pt-[48px]  flex md:flex-row flex-col items-center flex-wrap gap-y-4 ">
           <div
-            className={`grid grid-cols-2 gap-x-4 animate__animated animation-delay-900 ${
+            className={`grid md:grid-cols-2 grid-cols-1 gap-4  animate__animated animation-delay-900 ${
               inView1 && "animate__fadeInUp"
             }`}
           >
@@ -80,7 +82,11 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
               alt="banner"
             />
           </div>
-          <div className={"grid grid-cols-3 gap-x-4"}>
+          <div
+            className={
+              "grid md:grid-cols-3 grid-cols-1 md:gap-y-0 gap-y-4  gap-x-4"
+            }
+          >
             <div className=" max-w-[383px]  max-h-[300px]">
               <Image
                 unoptimized

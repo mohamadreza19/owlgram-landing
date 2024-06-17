@@ -12,6 +12,8 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
+import { RxHamburgerMenu } from "react-icons/rx";
+import burger from "/public/asset/svg/burger.svg";
 
 interface AppHeaderProps extends SegmentComponentProps {
   menu: {
@@ -38,13 +40,16 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
   menu,
   activeIndex,
 }) => {
+  const [isBurgerClick, setIsBurgerClick] = useState(false);
   function handleClick(href: string) {
     // setCurrentHref(href);
   }
-
+  function handleSetIsBurgerClick() {
+    setIsBurgerClick(!isBurgerClick);
+  }
   return (
     <>
-      <header className=" top-8 left-1/2 transform -translate-x-1/2  fixed font-poppins flex items-center justify-between gap-x-[55px] max-w-[1024px] md:w-full h-[72px] mx-auto py-[10px] px-[16px] bg-white rounded-2xl drop-shadow-md z-10">
+      <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed font-poppins flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  py-[10px] md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
         <Image
           unoptimized
           width={68}
@@ -52,7 +57,11 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
           src={"/main-logo.svg"}
           alt="logo"
         />
-        <ul className="flex">
+        <ul
+          className={` md:flex hidden ${
+            isBurgerClick && "!flex"
+          }  md:flex-row flex-col md:static absolute w-full left-1/2 md:transform-none transform -translate-x-1/2 md:p-0 py-3 px-2 top-[5rem] md:rounded-none rounded-[10px] mx-auto md:bg-none bg-white`}
+        >
           {menu.map((item, i) => (
             <LinkPagination
               onClick={() => handleClick(item.id)}
@@ -64,7 +73,10 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
             </LinkPagination>
           ))}
         </ul>
-        <div>
+        <div className="md:hidden block cursor-pointer">
+          <Image onClick={handleSetIsBurgerClick} alt="burger" {...burger} />
+        </div>
+        <div className="md:block hidden">
           <LanguageSelectBox options={flag} />
         </div>
       </header>
@@ -92,7 +104,7 @@ const LinkPagination: FunctionComponent<LinkPaginationProps> = ({
 
   return (
     <li
-      className={` py-2 px-2 flex items-center gap-x-2 transition-all   ${
+      className={` py-2 lg:px-2 px-1 flex items-center lg:gap-x-2 gap-x-1 transition-all lg:text-base text-sm  ${
         isActive ? "font-semibold" : "font-normal"
       }`}
     >

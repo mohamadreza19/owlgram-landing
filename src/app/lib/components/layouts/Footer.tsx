@@ -18,7 +18,7 @@ const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
   return (
     <Container1 bg="bg-[#171717]">
       <footer ref={ref} id={id} className="pb-9 ">
-        <div className="w-full pt-72 flex justify-between">
+        <div className="w-full pt-72 flex md:flex-row flex-col items-center gap-y-4 justify-between">
           <div>
             <section className="text-white">
               <p className="text-[48px] font-bold max-w-[414px]">

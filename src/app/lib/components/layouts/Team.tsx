@@ -23,17 +23,19 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
     <Container1 bg="bg-gray-100">
       <div ref={ref} id={id} className="w-full pt-52 pb-14">
         <section className="flex flex-col items-center justify-center">
-          <p className="font-extrabold text-[50px]">OWLEGRAM Team</p>
-          <p className="w-[723px] text-lg font-light text-center leading-10">
+          <p className="font-extrabold text-[50px] text-center">
+            OWLEGRAM Team
+          </p>
+          <p className="md:w-[723px] w-full text-lg font-light text-center leading-10">
             To the home cook, having the right pots and pans is essential for a
             properly functioning kitchen. You may be wondering what the best pot
             for vegetables is
           </p>
         </section>
-        <section className="flex gap-x-3 justify-center pt-16 relative">
+        <section className="md:flex grid grid-cols-2   md:[&>*]:max-w-fit  [&>*]:max-w-[171px] md:[&>*]:max-h-fit [&>*]:max-h-[278px] md:gap-x-3 gap-x-4  gap-y-2 justify-center items-center pt-16 relative">
           <Image
             unoptimized
-            className={`rounded-[15px] mt-16 animate__animated animation-delay-900 ${
+            className={`rounded-[15px] md:mt-16 animate__animated animation-delay-900 ${
               inView1 && "animate__fadeInUp"
             }`}
             alt="person4"
@@ -49,7 +51,7 @@ const Team: FunctionComponent<TeamProps> = ({ id, onView }) => {
           />
           <Image
             unoptimized
-            className={`rounded-[15px] mt-16 animate__animated animation-delay-1000 ${
+            className={`rounded-[15px] md:mt-16 animate__animated animation-delay-1000 ${
               inView1 && "animate__fadeInUp"
             }`}
             alt="person2"

@@ -11,7 +11,9 @@ interface Container1Props extends HTMLAttributes<HTMLDivElement> {
 const Container1: FunctionComponent<Container1Props> = ({ children, bg }) => {
   return (
     <div className={" w-full " + bg}>
-      <div className="max-w-[1440px]  px-[127px] ">{children}</div>
+      <div className="max-w-[1440px]  md:px-[127px] px-[18px] overflow-hidden mx-auto">
+        {children}
+      </div>
     </div>
   );
 };

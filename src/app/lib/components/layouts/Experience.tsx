@@ -29,7 +29,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
         className=" w-full flex flex-col justify-center items-center pt-8"
       >
         <section
-          className={`w-[563px] flex flex-col items-center animate__animated animation-delay-1000 ${
+          className={`md:w-[563px] w-full flex flex-col items-center animate__animated animation-delay-1000 ${
             inView1 && "animate__fadeIn"
           }`}
         >
@@ -45,11 +45,11 @@ const Experience: FunctionComponent<ExperienceProps> = ({
             <p className="text-lg">United Arab Emirates</p>
           </div>
           <div>
-            <p className="text-[56px] font-normal text-nowrap">
+            <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
               Use Our New Platform
             </p>
 
-            <p className="text-[56px] font-normal text-nowrap">
+            <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
               for better
               <span className="inline-block ms-5 font-bold text-teal-700">
                 experience

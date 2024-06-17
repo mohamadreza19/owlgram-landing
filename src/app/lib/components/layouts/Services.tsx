@@ -41,7 +41,9 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
             inView1 && "   animate__backInRight"
           } `}
         >
-          <p className="font-extrabold text-[50px]">Owelgram Service</p>
+          <p className="font-extrabold text-[50px] text-center">
+            Owelgram Service
+          </p>
           <p className="text-lg font-light text-center max-w-[723px] leading-10">
             To the home cook, having the right pots and pans is essential for a
             properly functioning kitchen. You may be wondering what the best pot
@@ -52,7 +54,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
           className={`grid  cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-x-4`}
         >
           <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 animate__animated animation-delay-1000 ${
+            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
               inView1 && "animate__slideInLeft"
             }`}
           >
@@ -100,7 +102,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
             </CustomContainer>
           </div>
           <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 animate__animated animation-delay-900 ${
+            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-900 ${
               inView1 && "animate__fadeInUp"
             }`}
           >
@@ -138,7 +140,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
             </CustomContainer>
           </div>
           <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 animate__animated animation-delay-1000 ${
+            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
               inView1 && "animate__slideInRight"
             }`}
           >
@@ -208,7 +210,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "w-[383px] h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px]  " +
+          "md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px]  " +
           bg
         }
       >
@@ -224,7 +226,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "w-[383px] h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  " +
+          "md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  " +
           bg
         }
       >
@@ -240,7 +242,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "w-[383px] h-[551px] flex flex-col  items-center justify-center gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 " +
+          "md:w-[383px] w-full h-[551px] flex flex-col   items-center justify-center gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 " +
           "bg"
         }
       >
