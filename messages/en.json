@@ -1,0 +1,49 @@
+{
+  "Index": {
+    "app-header": {
+      "HomePage": "Home Page",
+      "AboutOwlegram": "About Owlegram",
+      "Services": "Services",
+      "Download": "Download",
+      "Team": "Team",
+      "FAQ": "FAQ",
+      "Contact": "Contact"
+    },
+    "experience": {
+      "UnitedArabEmirates": "United Arab Emirates",
+      "UseOurNewPlatform": "  Use Our New Platform",
+      "forBetter": "for better",
+      "experience": "experience",
+      "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+    },
+    "why-chose": {
+      "onePlatformForAll": "One platform for All",
+      "whyChooseOwlegram": "Why Choose owlegram ?",
+      "paragraph1": " To the home cook, having the right pots and pans is essential for a properly functioning kitchen. You may be wondering what the best pot for vegetables is"
+    },
+    "services": {
+      "owelgramService": "Owelgram Service",
+      "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen. You may be wondering what the best pot for vegetables is"
+    },
+    "aownload-app": {
+      "getTheOwlMobileApp": "Get The Owl mobile App"
+    },
+    "team": {
+      " OWLEGRAMTeam": "OWLEGRAM Team"
+    },
+    "faq": {
+      "faq": "Frequently asked Question"
+    },
+    "footer": {
+      "1": "Keep up with the latest",
+      "2": "Phone : +1 659 - 5968- 6987",
+      "3": "Address : 9491 Cartwright Cliff, Gerryview, UT 11483",
+      "4": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen",
+      "5": "©2023 All Rights Reserved"
+    },
+    "productTitle": "Product Title",
+    "productDescription": "This is the product description in English.",
+    "text1": "Hi, Mostafa! How your day going?",
+    "text2": "You know how it goes ...."
+  }
+}

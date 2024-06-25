@@ -17,45 +17,15 @@ import {
   Services,
   Team,
   WhyChose,
-} from "./lib/components";
-import { SegmentComponentProps } from "./lib/shared";
-import { useTranslation } from "react-i18next";
+} from "../lib/components";
+import { SegmentComponentProps } from "../lib/shared";
+
+import { useTranslations } from "next-intl";
 
 interface IComponent {
   component: FunctionComponent<SegmentComponentProps>;
 }
 
-const menu = [
-  {
-    id: "experience",
-    text: "Home Page",
-  },
-  {
-    id: "whyChose",
-    text: "About Owlegram",
-  },
-  {
-    id: "services",
-    text: "Services",
-  },
-  {
-    id: "download",
-    text: "Download",
-  },
-  {
-    id: "team",
-    text: "Team",
-  },
-
-  {
-    id: "FAQ",
-    text: "FAQ",
-  },
-  {
-    id: "contact",
-    text: "Contact",
-  },
-];
 const components: IComponent[] = [
   {
     component: Experience,
@@ -83,8 +53,39 @@ const components: IComponent[] = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const appHeaderRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation("common");
-  console.log(t("productTitle"));
+  const t = useTranslations("Index");
+  const menu = [
+    {
+      id: "experience",
+      text: t("app-header.HomePage"),
+    },
+    {
+      id: "whyChose",
+      text: t("app-header.AboutOwlegram"),
+    },
+    {
+      id: "services",
+      text: t("app-header.Services"),
+    },
+    {
+      id: "download",
+      text: t("app-header.Download"),
+    },
+    {
+      id: "team",
+      text: t("app-header.Team"),
+    },
+
+    {
+      id: "FAQ",
+      text: t("app-header.FAQ"),
+    },
+    {
+      id: "contact",
+      text: t("app-header.Contact"),
+    },
+  ];
+
   function handleSetActiveIndex(index: number) {
     setActiveIndex(index);
   }
