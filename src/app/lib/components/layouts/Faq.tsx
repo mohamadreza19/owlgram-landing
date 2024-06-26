@@ -1,14 +1,15 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from 'react';
 
 interface FaqProps {}
 
-import openModalIcon from "/public/asset/svg/open-modal.svg";
-import closeModalIcon from "/public/asset/svg/close-modal.svg";
-import messenger from "/public/asset/faq/messenger.svg";
-import Image from "next/image";
-import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
-import { useInView } from "react-intersection-observer";
+import openModalIcon from '/public/asset/svg/open-modal.svg';
+import closeModalIcon from '/public/asset/svg/close-modal.svg';
+import messenger from '/public/asset/faq/messenger.svg';
+import Image from 'next/image';
+import { Container1 } from '../containers';
+import { SegmentComponentProps } from '../../shared';
+import { useInView } from 'react-intersection-observer';
+import { useTranslations } from 'next-intl';
 
 interface FaqProps extends SegmentComponentProps {}
 
@@ -16,19 +17,20 @@ type FaqT = {
   title: string;
   body: string;
 };
-const faqs: FaqT[] = [
-  {
-    title: "Why is my account associated with a region?",
-    body: "We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,",
-  },
-  {
-    title: "Determining the region associated with your account",
-    body: "We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,",
-  },
-];
-const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
-  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
 
+const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
+  const t = useTranslations('index');
+  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const faqs: FaqT[] = [
+    {
+      title: 'Why is my account associated with a region?',
+      body: 'We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,',
+    },
+    {
+      title: 'Determining the region associated with your account',
+      body: 'We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,',
+    },
+  ];
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   function handleChoseActiveIndex(index: number) {
     setActiveIndex(index);
@@ -43,7 +45,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
   }, [inView1]);
   return (
     <Container1 bg="bg-gray2-500">
-      {" "}
+      {' '}
       <div
         ref={ref}
         id={id}
@@ -51,9 +53,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
       >
         <div>
           <section>
-            <p className="font-bold text-[48px] text-white">
-              Frequently asked Question
-            </p>
+            <p className="font-bold text-[48px] text-white">{t('faq.faq')}</p>
             <p className="max-w-[560px] text-white text-lg font-light">
               To the home cook, having the right pots and pans is essential for
               a properly functioning kitchen
@@ -77,17 +77,17 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
           </div>
           <div>
             <p className="text-[20px] font-bold pt-5">
-              You have different question?
+              {t('faq.youHaveDifferentQuestion')}
             </p>
           </div>
           <div>
             <p className="text-[20px] font-normal text-center pt-4">
-              our team will answer all your question، we ensure a quick response
+              {t('faq.text1')}
             </p>
           </div>
           <div>
             <button className="mt-5 bg-teal2-500 w-[235px] h-[54px] rounded-[9px] text-lg font-semibold text-white">
-              Contact Support team
+              {t('faq.text2')}
             </button>
           </div>
         </div>
@@ -142,7 +142,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       </div>
       <div
         className={`py-0  transition-all delay-300  max-w-[631px]  max-h-0 overflow-hidden ${
-          isActive && "py-[18px] max-h-fit"
+          isActive && 'py-[18px] max-h-fit'
         }`}
       >
         <p>{body}</p>

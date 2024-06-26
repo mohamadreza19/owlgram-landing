@@ -1,12 +1,13 @@
-import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
-import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
-import { useInView } from "react-intersection-observer";
+import Image from 'next/image';
+import { FunctionComponent, useEffect } from 'react';
+import { Container1 } from '../containers';
+import { SegmentComponentProps } from '../../shared';
+import { useInView } from 'react-intersection-observer';
 
 interface ExperienceProps extends SegmentComponentProps {}
 
-import BigPhone from "/public/asset/banner/big-phone.png";
+import BigPhone from '/public/asset/banner/big-phone.png';
+import { useTranslations } from 'next-intl';
 
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
@@ -14,6 +15,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
   onView,
 }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const t = useTranslations('index');
   useEffect(() => {
     if (inView1) {
       onView();
@@ -30,36 +32,35 @@ const Experience: FunctionComponent<ExperienceProps> = ({
       >
         <section
           className={`md:w-[563px] w-full flex flex-col items-center animate__animated animation-delay-1000 ${
-            inView1 && "animate__fadeIn"
+            inView1 && 'animate__fadeIn'
           }`}
         >
           <div className="w-fit flex gap-x-2 py-1 px-2 bg-white rounded-3xl">
             <Image
               className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
-              src={"/asset/flag/uae.svg"}
+              src={'/asset/flag/uae.svg'}
               width={24}
               height={24}
               alt="flag"
               unoptimized
             />
-            <p className="text-lg">United Arab Emirates</p>
+            <p className="text-lg">{t('experience.UnitedArabEmirates')}</p>
           </div>
           <div>
             <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
-              Use Our New Platform
+              {t('experience.UseOurNewPlatform')}
             </p>
 
             <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
-              for better
+              {t('experience.forBetter')}
               <span className="inline-block ms-5 font-bold text-teal-700">
-                experience
+                {t('experience.experience')}
               </span>
             </p>
           </div>
           <div>
             <p className="text-center text-lg font-light">
-              To the home cook, having the right pots and pans is essential for
-              a properly functioning kitchen
+              {t('experience.paragraph1')}
             </p>
           </div>
         </section>
@@ -69,10 +70,10 @@ const Experience: FunctionComponent<ExperienceProps> = ({
           </div>
 
           <div className="absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center  bg-container-1 bg-no-repeat bg-cover drop-shadow-xl text-sm ">
-            Hi, Mostafa! How your day going?
+            {t('text1')}
           </div>
           <div className="absolute right-[11%] top-[20%] w-[236px]  h-[55px] flex items-center justify-center  bg-container-2 bg-no-repeat bg-cover drop-shadow-xl text-sm text-white ">
-            You know how it goes ....
+            {t('text2')}
           </div>
         </section>
       </div>

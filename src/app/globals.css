@@ -1,11 +1,10 @@
-@import url("/visby/fonts/font-face.css");
+@import url('/visby/fonts/font-face.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  /* font-family: "Visby Regular"; */
 }
 html {
   scroll-behavior: smooth;

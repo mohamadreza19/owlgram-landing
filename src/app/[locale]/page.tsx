@@ -1,12 +1,13 @@
-"use client";
-
+'use client';
+import { useTranslations } from 'next-intl';
 import {
   FunctionComponent,
   ReactElement,
   RefObject,
+  useEffect,
   useRef,
   useState,
-} from "react";
+} from 'react';
 import {
   AppHeader,
   Container1,
@@ -17,10 +18,10 @@ import {
   Services,
   Team,
   WhyChose,
-} from "../lib/components";
-import { SegmentComponentProps } from "../lib/shared";
-
-import { useTranslations } from "next-intl";
+} from '../lib/components';
+import { SegmentComponentProps } from '../lib/shared';
+import { getLocale } from 'next-intl/server';
+import { useRouter } from '@/navigation';
 
 interface IComponent {
   component: FunctionComponent<SegmentComponentProps>;
@@ -53,36 +54,38 @@ const components: IComponent[] = [
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0);
   const appHeaderRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("Index");
+
+  const t = useTranslations('index');
+
   const menu = [
     {
-      id: "experience",
-      text: t("app-header.HomePage"),
+      id: 'experience',
+      text: t('app-header.HomePage'),
     },
     {
-      id: "whyChose",
-      text: t("app-header.AboutOwlegram"),
+      id: 'whyChose',
+      text: t('app-header.AboutOwlegram'),
     },
     {
-      id: "services",
-      text: t("app-header.Services"),
+      id: 'services',
+      text: t('app-header.Services'),
     },
     {
-      id: "download",
-      text: t("app-header.Download"),
+      id: 'download',
+      text: t('app-header.Download'),
     },
     {
-      id: "team",
-      text: t("app-header.Team"),
+      id: 'team',
+      text: t('app-header.Team'),
     },
 
     {
-      id: "FAQ",
-      text: t("app-header.FAQ"),
+      id: 'FAQ',
+      text: t('app-header.FAQ'),
     },
     {
-      id: "contact",
-      text: t("app-header.Contact"),
+      id: 'contact',
+      text: t('app-header.Contact'),
     },
   ];
 

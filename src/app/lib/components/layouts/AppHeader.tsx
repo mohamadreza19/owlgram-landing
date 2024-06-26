@@ -1,19 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
-
+import Image from 'next/image';
+import Link from 'next/link';
+import { useParams, usePathname, useSearchParams } from 'next/navigation';
+import owlgramLogo from '/public/main-logo.svg';
 import {
   FunctionComponent,
   ReactNode,
   useEffect,
   useRef,
   useState,
-} from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
-import { RxHamburgerMenu } from "react-icons/rx";
-import burger from "/public/asset/svg/burger.svg";
+} from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { Container1 } from '../containers';
+import { SegmentComponentProps } from '../../shared';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import burger from '/public/asset/svg/burger.svg';
 
 interface AppHeaderProps extends SegmentComponentProps {
   menu: {
@@ -26,15 +26,16 @@ type Flag = { src: string; text: string };
 
 const flag: Flag[] = [
   {
-    src: "/asset/flag/usa.svg",
-    text: "En",
+    src: '/asset/flag/usa.svg',
+    text: 'En',
   },
   {
-    src: "/asset/flag/france.svg",
-    text: "Fr",
+    src: '/asset/flag/france.svg',
+    text: 'Fr',
   },
 ];
 
+// font-poppins
 const AppHeader: FunctionComponent<AppHeaderProps> = ({
   id,
   menu,
@@ -49,17 +50,17 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
   }
   return (
     <>
-      <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed font-poppins flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  py-[10px] md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
+      <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed   flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  py-[10px] md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
         <Image
           unoptimized
           width={68}
           height={43}
-          src={"/main-logo.svg"}
+          src={owlgramLogo.src}
           alt="logo"
         />
         <ul
           className={` md:flex hidden ${
-            isBurgerClick && "!flex"
+            isBurgerClick && '!flex'
           }  md:flex-row flex-col md:static absolute w-full left-1/2 md:transform-none transform -translate-x-1/2 md:p-0 py-3 px-2 top-[5rem] md:rounded-none rounded-[10px] mx-auto md:bg-none bg-white`}
         >
           {menu.map((item, i) => (
@@ -67,7 +68,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
               onClick={() => handleClick(item.id)}
               isActive={activeIndex === i}
               key={i}
-              href={"/#" + item.id}
+              href={'/#' + item.id}
             >
               {item.text}
             </LinkPagination>
@@ -105,7 +106,7 @@ const LinkPagination: FunctionComponent<LinkPaginationProps> = ({
   return (
     <li
       className={` py-2 lg:px-2 px-1 flex items-center lg:gap-x-2 gap-x-1 transition-all lg:text-base text-sm  ${
-        isActive ? "font-semibold" : "font-normal"
+        isActive ? 'font-semibold' : 'font-normal'
       }`}
     >
       <Point isActive={isActive} />
@@ -123,7 +124,7 @@ const Point: FunctionComponent<PointProps> = ({ isActive }) => {
   return (
     <div
       className={`w-2 h-2 rounded-full bg-teal-700 transition-opacity opacity-0 ${
-        isActive && "opacity-100"
+        isActive && 'opacity-100'
       }`}
     ></div>
   );
@@ -151,7 +152,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
       {/* <selectBox> */}
       <div
         className={`transition-opacity delay-300 opacity-0 hidden ${
-          openBox && "opacity-100 !block"
+          openBox && 'opacity-100 !block'
         } absolute min-w-full backdrop-blur-xl bg-white/30  top-full ps-4 pe-5 py-3 rounded-lg border border-solid border-gray-300`}
       >
         {options.map((flag, i2) => (

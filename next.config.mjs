@@ -1,4 +1,4 @@
-import createNextIntlPlugin from "next-intl/plugin";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
@@ -13,7 +13,7 @@ const nextConfig = {
   trailingSlash: true,
 
   images: {
-    domains: ["owlegram.com", "127.0.0.1"],
+    domains: ['owlegram.com', '127.0.0.1'],
     disableStaticImages: false,
     unoptimized: true,
   },

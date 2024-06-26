@@ -1,20 +1,22 @@
-import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import Image from 'next/image';
+import { FunctionComponent, useEffect } from 'react';
 
-import Banner1 from "/public/asset/banner/banner-cripto.png";
-import Banner2 from "/public/asset/banner/banner-allService.png";
-import Banner3 from "/public/asset/banner/banner-free-transfer.png";
-import Banner4 from "/public/asset/banner/banner-videoCall.png";
-import Banner5 from "/public/asset/banner/banner-check-out-products.png";
-import Banner6 from "/public/asset/banner/banner-chat.png";
-import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
-import { useInView } from "react-intersection-observer";
+import Banner1 from '/public/asset/banner/banner-cripto.png';
+import Banner2 from '/public/asset/banner/banner-allService.png';
+import Banner3 from '/public/asset/banner/banner-free-transfer.png';
+import Banner4 from '/public/asset/banner/banner-videoCall.png';
+import Banner5 from '/public/asset/banner/banner-check-out-products.png';
+import Banner6 from '/public/asset/banner/banner-chat.png';
+import { Container1 } from '../containers';
+import { SegmentComponentProps } from '../../shared';
+import { useInView } from 'react-intersection-observer';
+import { useTranslations } from 'use-intl';
 
 interface WhyChoseProps extends SegmentComponentProps {}
 
 const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const t = useTranslations('index');
   useEffect(() => {
     if (inView1) {
       onView();
@@ -30,23 +32,23 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
       >
         <section
           className={`flex  flex-col justify-center items-center animate__animated animation-delay-600 ${
-            inView1 && "animate__fadeIn"
+            inView1 && 'animate__fadeIn'
           }`}
         >
-          <p className="font-normal text-[22px]">One platform for All </p>
+          <p className="font-normal text-[22px]">
+            {t('why-chose.onePlatformForAll')}
+          </p>
           <p className="font-bold text-[50px] text-center">
-            Why Choose owlegram ?
+            {t('why-chose.whyChooseOwlegram')}
           </p>
           <p className="text-lg font-light text-center md:w-[733px] w-full">
-            To the home cook, having the right pots and pans is essential for a
-            properly functioning kitchen. You may be wondering what the best pot
-            for vegetables is
+            {t('why-chose.paragraph1')}
           </p>
         </section>
         <section className="pt-[48px]  flex md:flex-row flex-col items-center flex-wrap gap-y-4 ">
           <div
             className={`grid md:grid-cols-2 grid-cols-1 gap-4  animate__animated animation-delay-900 ${
-              inView1 && "animate__fadeInUp"
+              inView1 && 'animate__fadeInUp'
             }`}
           >
             <div className=" max-w-[590px]  max-h-[536px]">
@@ -71,7 +73,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
 
           <div
             className={`w-full min-w-full h-[296px]  animate__animated animation-delay-1000 ${
-              inView1 && "animate__fadeInUp"
+              inView1 && 'animate__fadeInUp'
             }`}
           >
             <Image
@@ -84,7 +86,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
           </div>
           <div
             className={
-              "grid md:grid-cols-3 grid-cols-1 md:gap-y-0 gap-y-4  gap-x-4"
+              'grid md:grid-cols-3 grid-cols-1 md:gap-y-0 gap-y-4  gap-x-4'
             }
           >
             <div className=" max-w-[383px]  max-h-[300px]">
