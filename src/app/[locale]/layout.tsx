@@ -1,7 +1,7 @@
-import { Locales } from '@/navigation';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { ReactNode, useEffect } from 'react';
+import { Locales } from "@/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { ReactNode, useEffect } from "react";
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -13,6 +13,7 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const messages = await getMessages();
+
   // useEffect(() => {
   //   const htmlEl = document.querySelector('html') as HTMLElement;
   //   const bodyEl = document.querySelector('body') as HTMLBodyElement;

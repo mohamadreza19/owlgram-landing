@@ -1,53 +1,70 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useParams, usePathname, useSearchParams } from 'next/navigation';
-import owlgramLogo from '/public/main-logo.svg';
+import Image from "next/image";
+
+import { useParams, usePathname, useSearchParams } from "next/navigation";
+import AwayListener from "react-click-away-listener";
+import owlgramLogo from "/public/main-logo.svg";
 import {
   FunctionComponent,
   ReactNode,
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
-import { Container1 } from '../containers';
-import { SegmentComponentProps } from '../../shared';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import burger from '/public/asset/svg/burger.svg';
-
+} from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { Container1 } from "../containers";
+import {
+  AllLanguagesResponse,
+  Language,
+  SegmentComponentProps,
+} from "../../shared";
+import { RxHamburgerMenu } from "react-icons/rx";
+import burger from "/public/asset/svg/burger.svg";
+import { useSelector } from "react-redux";
+import { RootState } from "../../services/store";
+import { ApiCallService } from "../../services";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter, Link, locales } from "@/navigation";
+import { useDispatch } from "react-redux";
+import { setLocale } from "../../features/locale";
+import type { Locales } from "@/navigation";
 interface AppHeaderProps extends SegmentComponentProps {
   menu: {
     id: string;
     text: string;
   }[];
   activeIndex: number;
+  languages: AllLanguagesResponse | undefined;
 }
-type Flag = { src: string; text: string };
-
-const flag: Flag[] = [
-  {
-    src: '/asset/flag/usa.svg',
-    text: 'En',
-  },
-  {
-    src: '/asset/flag/france.svg',
-    text: 'Fr',
-  },
-];
 
 // font-poppins
 const AppHeader: FunctionComponent<AppHeaderProps> = ({
   id,
   menu,
   activeIndex,
+  languages,
 }) => {
   const [isBurgerClick, setIsBurgerClick] = useState(false);
+  const selectedLocale = useSelector((state: RootState) => state.locale);
+  const dispatch = useDispatch();
+  const pathName = usePathname();
+
+  // const locale = useSelector((state: RootState) => state.locale);
+
   function handleClick(href: string) {
     // setCurrentHref(href);
   }
   function handleSetIsBurgerClick() {
     setIsBurgerClick(!isBurgerClick);
   }
+  function handleSelectLocale(language: Language) {
+    locales.forEach((locale) => {
+      const lowerCase = language.title.toLowerCase();
+      if (locale.includes(lowerCase)) {
+        dispatch(setLocale(language));
+      }
+    });
+  }
+
   return (
     <>
       <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed   flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  py-[10px] md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
@@ -60,25 +77,47 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
         />
         <ul
           className={` md:flex hidden ${
-            isBurgerClick && '!flex'
+            isBurgerClick && "!flex"
           }  md:flex-row flex-col md:static absolute w-full left-1/2 md:transform-none transform -translate-x-1/2 md:p-0 py-3 px-2 top-[5rem] md:rounded-none rounded-[10px] mx-auto md:bg-none bg-white`}
         >
-          {menu.map((item, i) => (
-            <LinkPagination
-              onClick={() => handleClick(item.id)}
-              isActive={activeIndex === i}
-              key={i}
-              href={'/#' + item.id}
+          <section>
+            <div
+              className="md:hidden block"
+              // className="bg-gray2-300 w-full h-[51px] rounded-lg"
             >
-              {item.text}
-            </LinkPagination>
+              {languages && (
+                <LanguageSelectBox
+                  selectedLocale={selectedLocale}
+                  options={languages}
+                  handleSelectLocale={handleSelectLocale}
+                />
+              )}
+            </div>
+          </section>
+          {menu.map((item, i) => (
+            <>
+              <LinkPagination
+                onClick={() => handleClick(item.id)}
+                isActive={activeIndex === i}
+                key={i}
+                href={"/#" + item.id}
+              >
+                {item.text}
+              </LinkPagination>
+            </>
           ))}
         </ul>
         <div className="md:hidden block cursor-pointer">
           <Image onClick={handleSetIsBurgerClick} alt="burger" {...burger} />
         </div>
         <div className="md:block hidden">
-          <LanguageSelectBox options={flag} />
+          {languages && (
+            <LanguageSelectBox
+              selectedLocale={selectedLocale}
+              options={languages}
+              handleSelectLocale={handleSelectLocale}
+            />
+          )}
         </div>
       </header>
       <Container1 bg="bg-gray-100">
@@ -106,10 +145,11 @@ const LinkPagination: FunctionComponent<LinkPaginationProps> = ({
   return (
     <li
       className={` py-2 lg:px-2 px-1 flex items-center lg:gap-x-2 gap-x-1 transition-all lg:text-base text-sm  ${
-        isActive ? 'font-semibold' : 'font-normal'
+        isActive ? "font-semibold" : "font-normal"
       }`}
     >
       <Point isActive={isActive} />
+
       <Link onClick={onClick} href={href}>
         {children}
       </Link>
@@ -124,76 +164,112 @@ const Point: FunctionComponent<PointProps> = ({ isActive }) => {
   return (
     <div
       className={`w-2 h-2 rounded-full bg-teal-700 transition-opacity opacity-0 ${
-        isActive && 'opacity-100'
+        isActive && "opacity-100"
       }`}
     ></div>
   );
 };
 
 interface LanguageSelectBoxProps {
-  options: Flag[];
+  options: AllLanguagesResponse;
+  selectedLocale: Language;
+  handleSelectLocale: (language: Language) => void;
 }
 
 const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
   options,
+  selectedLocale,
+  handleSelectLocale,
 }) => {
-  const [selected, setSelected] = useState(options[0]);
   const [openBox, setOpenBox] = useState(false);
+  const pathname = usePathname();
 
   function handleToggleOpenBox() {
     setOpenBox(!openBox);
   }
-  function handleSelectItem(item: Flag) {
-    setSelected(item);
+  function closeBox() {
     setOpenBox(false);
   }
-  return (
-    <div className="flex items-center gap-x-2 relative">
-      {/* <selectBox> */}
-      <div
-        className={`transition-opacity delay-300 opacity-0 hidden ${
-          openBox && 'opacity-100 !block'
-        } absolute min-w-full backdrop-blur-xl bg-white/30  top-full ps-4 pe-5 py-3 rounded-lg border border-solid border-gray-300`}
-      >
-        {options.map((flag, i2) => (
-          <section key={i2 + 1} className="ps-2 pe-8 py-2">
-            <Selecteditem onClick={() => handleSelectItem(flag)} {...flag} />
-          </section>
-        ))}
-      </div>
+  function handleActiveLanguage(title: string) {
+    const lowerCaseLanguage = title.toLowerCase();
 
-      <Selecteditem {...selected} />
-      <IoIosArrowDown
-        className="cursor-pointer"
-        onClick={handleToggleOpenBox}
-      />
-    </div>
+    if (pathname.includes(lowerCaseLanguage)) return true;
+    else return false;
+  }
+
+  return (
+    <AwayListener onClickAway={closeBox}>
+      <div className="flex items-center gap-x-2 relative">
+        {/* <selectBox> */}
+        <div
+          className={`transition-opacity delay-300 md:opacity-0  md:hidden grid grid-cols-3 ${
+            openBox && "!opacity-100 !flex"
+          } md:absolute relative min-w-full md:flex-col flex-wrap backdrop-blur-xl md:bg-white/30  bg-gray2-300 top-full md:ps-4 md:pe-5 py-3 rounded-lg border border-solid md:border-gray-300`}
+        >
+          {options.map((flag, i2) => (
+            <Selecteditem
+              isActive={handleActiveLanguage(flag.title)}
+              onClick={() => {}}
+              {...flag}
+            />
+          ))}
+        </div>
+
+        {selectedLocale.id && (
+          <Selecteditem
+            sectionClassName="!w-fit !h-fit"
+            isActive={false}
+            className="md:inline hidden !w-fit !h-fit"
+            onClick={handleToggleOpenBox}
+            {...selectedLocale}
+          />
+        )}
+        <IoIosArrowDown
+          className="cursor-pointer md:block hidden"
+          onClick={handleToggleOpenBox}
+        />
+      </div>
+    </AwayListener>
   );
 };
-interface Selecteditem extends Flag {
+interface Selecteditem extends Language {
   onClick?: () => void;
+  className?: string;
+  isActive: boolean;
+  sectionClassName?: string;
 }
 
 const Selecteditem: FunctionComponent<Selecteditem> = ({
-  src,
-  text,
+  flag,
+  id,
+  title,
   onClick,
+  className,
+  sectionClassName,
+  isActive,
 }) => {
   return (
-    <section
-      onClick={onClick}
-      className=" flex items-center gap-x-1 cursor-pointer"
-    >
-      <Image
-        className="rounded-full min-w-4 min-h-4 max-w-4 max-h-4 object-cover"
-        src={src}
-        width={16}
-        height={16}
-        alt="flag"
-        unoptimized
-      />
-      <p className="text-lg font-semibold">{text}</p>
-    </section>
+    <Link href="/" locale={String(title).toLowerCase()} className={className}>
+      <section
+        onClick={onClick}
+        className={` ${sectionClassName}
+          ${
+            isActive &&
+            "md:!bg-transparent bg-white rounded-[7px] md:shadow-none shadow"
+          }
+        md:w-fit  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer`}
+      >
+        <Image
+          className="rounded-full min-w-4 min-h-4 max-w-4 max-h-4 object-fill"
+          src={flag}
+          width={16}
+          height={16}
+          alt="flag"
+          unoptimized
+        />
+        <p className="text-lg font-semibold">{title}</p>
+      </section>
+    </Link>
   );
 };
 export default AppHeader;

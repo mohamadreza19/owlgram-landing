@@ -1,13 +1,22 @@
-@import url('/visby/fonts/font-face.css');
+@import url("/visby/fonts/font-face.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+a {
+  width: fit-content;
+  /* height: ; */
+}
 * {
 }
 html {
   scroll-behavior: smooth;
+}
+.ltr {
+  direction: ltr;
+}
+.rtl {
+  direction: rtl;
 }
 .animation-delay-600 {
   animation-delay: 0.6s;

@@ -19,6 +19,30 @@
     "why-chose": {
       "onePlatformForAll": "One platform for All",
       "whyChooseOwlegram": "Why Choose owlegram ?",
+      "service": {
+        "service": "All Service in your hand",
+        "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+      },
+      "payment": {
+        "payment": "All payment with Crypto",
+        "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+      },
+      "transfer": {
+        "transfer": "Free transfer anywhere around the world",
+        "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+      },
+      "Chat&Group": {
+        "Chat&Group": "Chat & Group Management",
+        "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+      },
+      "Voice&VideoCall": {
+        "Voice&VideoCall": "Voice & Video Call",
+        "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen"
+      },
+      "productFeatures": {
+        "productFeatures": "Check our other product features",
+        "viewMore": "View more"
+      },
       "paragraph1": "To the home cook, having the right pots and pans is essential for a properly functioning kitchen. You may be wondering what the best pot for vegetables is"
     },
     "services": {

@@ -1,35 +1,45 @@
-import { FunctionComponent, ReactNode, useEffect } from 'react';
+import { FunctionComponent, ReactNode, useEffect } from "react";
 
 interface ServicesProps {}
-import electricity from '/public/asset/service/electricity.svg';
-import placeholderPerson from '/public/asset/service/placeholder-person.svg';
-import placeholderAcademy from '/public/asset/service/academy-placeholder.svg';
-import placeholderCrypto from '/public/asset/service/crypto-placeholder.svg';
-import mobileButtonSolid1 from '/public/asset/service/mobile-button-solid-1.svg';
-import placeholderShop from '/public/asset/service/shop-placeholder.svg';
-import placeholderTranport from '/public/asset/service/transport-placeholder.svg';
-import placeholderTour from '/public/asset/service/tour-placeholder.svg';
+import electricity from "/public/asset/service/electricity.svg";
+import placeholderPerson from "/public/asset/service/placeholder-person.svg";
+import placeholderAcademy from "/public/asset/service/academy-placeholder.svg";
+import placeholderCrypto from "/public/asset/service/crypto-placeholder.svg";
+import mobileButtonSolid1 from "/public/asset/service/mobile-button-solid-1.svg";
+import placeholderShop from "/public/asset/service/shop-placeholder.svg";
+import placeholderTranport from "/public/asset/service/transport-placeholder.svg";
+import placeholderTour from "/public/asset/service/tour-placeholder.svg";
 
 ///
-import service from '/public/asset/service/service.svg';
-import person from '/public/asset/service/person.png';
-import academy from '/public/asset/service/academy.svg';
-import crypto from '/public/asset/service/crypto.svg';
-import owlgramLogo from '/public/main-logo.svg';
-import shop from '/public/asset/service/shop.svg';
-import transport from '/public/asset/service/transport.svg';
-import tour from '/public/asset/service/tour.svg';
-import Image, { StaticImageData } from 'next/image';
-import { Container1 } from '../containers';
-import { SegmentComponentProps } from '../../shared';
-import { useInView } from 'react-intersection-observer';
-import { useTranslations } from 'next-intl';
+import service from "/public/asset/service/service.svg";
+import person from "/public/asset/service/person.png";
+import academy from "/public/asset/service/academy.svg";
+import crypto from "/public/asset/service/crypto.svg";
+import owlgramLogo from "/public/main-logo.svg";
+import shop from "/public/asset/service/shop.svg";
+import transport from "/public/asset/service/transport.svg";
+import tour from "/public/asset/service/tour.svg";
+import Image, { StaticImageData } from "next/image";
+import { Container1 } from "../containers";
+import { SegmentComponentProps } from "../../shared";
+import { useInView } from "react-intersection-observer";
+import { useTranslations } from "next-intl";
+import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import { getLocale } from "../../features/locale";
+import { ApiCallService } from "../../services";
 
 interface ServicesProps extends SegmentComponentProps {}
 
 const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
-  const t = useTranslations('index');
+  const locale = useSelector(getLocale);
+  const services = useQuery({
+    queryKey: ["services", locale.id],
+    queryFn: () => ApiCallService.getServiceByIdLanguageId(locale.id),
+  });
+  
+  const t = useTranslations("index");
   useEffect(() => {
     if (inView1) {
       onView();
@@ -40,14 +50,14 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
       <div ref={ref} id={id} className="w-full pt-52">
         <section
           className={` flex flex-col items-center  animate__animated ${
-            inView1 && '   animate__backInRight'
+            inView1 && "   animate__backInRight"
           } `}
         >
           <p className="font-extrabold text-[50px] text-center">
-            {t('services.owelgramService')}
+            {t("services.owelgramService")}
           </p>
           <p className="text-lg font-light text-center max-w-[723px] leading-10">
-            {t('services.paragraph1')}
+            {t("services.paragraph1")}
           </p>
         </section>
         <section
@@ -55,7 +65,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
         >
           <div
             className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
-              inView1 && 'animate__slideInLeft'
+              inView1 && "animate__slideInLeft"
             }`}
           >
             <CustomContainer
@@ -103,7 +113,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
           </div>
           <div
             className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-900 ${
-              inView1 && 'animate__fadeInUp'
+              inView1 && "animate__fadeInUp"
             }`}
           >
             <CustomContainer
@@ -141,7 +151,7 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
           </div>
           <div
             className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
-              inView1 && 'animate__slideInRight'
+              inView1 && "animate__slideInRight"
             }`}
           >
             <CustomContainer
@@ -194,8 +204,8 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
 };
 
 interface CustomContainerProps {
-  type: 'small' | 'medium' | 'big';
-  bg: 'bg-white' | 'bg-teal-400';
+  type: "small" | "medium" | "big";
+  bg: "bg-white" | "bg-teal-400";
   children: ReactNode;
   imageToBackground: StaticImageData;
 }
@@ -206,11 +216,11 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
   bg,
   imageToBackground,
 }) => {
-  if (type === 'small')
+  if (type === "small")
     return (
       <div
         className={
-          'md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px]  ' +
+          "md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px]  " +
           bg
         }
       >
@@ -222,11 +232,11 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
         {children}
       </div>
     );
-  if (type === 'medium')
+  if (type === "medium")
     return (
       <div
         className={
-          'md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  ' +
+          "md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  " +
           bg
         }
       >
@@ -238,12 +248,12 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
         {children}
       </div>
     );
-  if (type === 'big')
+  if (type === "big")
     return (
       <div
         className={
-          'md:w-[383px] w-full h-[551px] flex flex-col   items-center justify-center gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 ' +
-          'bg'
+          "md:w-[383px] w-full h-[551px] flex flex-col   items-center justify-center gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 " +
+          "bg"
         }
       >
         <Image

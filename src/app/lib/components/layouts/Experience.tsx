@@ -1,13 +1,17 @@
-import Image from 'next/image';
-import { FunctionComponent, useEffect } from 'react';
-import { Container1 } from '../containers';
-import { SegmentComponentProps } from '../../shared';
-import { useInView } from 'react-intersection-observer';
+import Image from "next/image";
+import { FunctionComponent, useEffect } from "react";
+import { Container1 } from "../containers";
+import { SegmentComponentProps } from "../../shared";
+import { useInView } from "react-intersection-observer";
+
+import uaeFlag from "/public/asset/flag/uae.svg";
+import container_1 from "/public/asset/banner/container-1.png";
+import container_2 from "/public/asset/banner/container-2.png";
 
 interface ExperienceProps extends SegmentComponentProps {}
 
-import BigPhone from '/public/asset/banner/big-phone.png';
-import { useTranslations } from 'next-intl';
+import BigPhone from "/public/asset/banner/big-phone.png";
+import { useTranslations } from "next-intl";
 
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
@@ -15,7 +19,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
   onView,
 }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
-  const t = useTranslations('index');
+  const t = useTranslations("index");
   useEffect(() => {
     if (inView1) {
       onView();
@@ -32,35 +36,35 @@ const Experience: FunctionComponent<ExperienceProps> = ({
       >
         <section
           className={`md:w-[563px] w-full flex flex-col items-center animate__animated animation-delay-1000 ${
-            inView1 && 'animate__fadeIn'
+            inView1 && "animate__fadeIn"
           }`}
         >
           <div className="w-fit flex gap-x-2 py-1 px-2 bg-white rounded-3xl">
             <Image
               className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
-              src={'/asset/flag/uae.svg'}
+              src={uaeFlag.src}
               width={24}
               height={24}
               alt="flag"
               unoptimized
             />
-            <p className="text-lg">{t('experience.UnitedArabEmirates')}</p>
+            <p className="text-lg">{t("experience.UnitedArabEmirates")}</p>
           </div>
           <div>
             <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
-              {t('experience.UseOurNewPlatform')}
+              {t("experience.UseOurNewPlatform")}
             </p>
 
             <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
-              {t('experience.forBetter')}
+              {t("experience.forBetter")}
               <span className="inline-block ms-5 font-bold text-teal-700">
-                {t('experience.experience')}
+                {t("experience.experience")}
               </span>
             </p>
           </div>
           <div>
             <p className="text-center text-lg font-light">
-              {t('experience.paragraph1')}
+              {t("experience.paragraph1")}
             </p>
           </div>
         </section>
@@ -69,11 +73,17 @@ const Experience: FunctionComponent<ExperienceProps> = ({
             <Image unoptimized {...BigPhone} alt="big-phone" />
           </div>
 
-          <div className="absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center  bg-container-1 bg-no-repeat bg-cover drop-shadow-xl text-sm ">
-            {t('text1')}
+          <div
+            style={{ backgroundImage: `url(${container_1.src})` }}
+            className={`absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center   bg-no-repeat bg-cover drop-shadow-xl text-sm`}
+          >
+            {t("text1")}
           </div>
-          <div className="absolute right-[11%] top-[20%] w-[236px]  h-[55px] flex items-center justify-center  bg-container-2 bg-no-repeat bg-cover drop-shadow-xl text-sm text-white ">
-            {t('text2')}
+          <div
+            style={{ backgroundImage: `url(${container_2.src})` }}
+            className={`absolute right-[11%] top-[20%] w-[236px]  h-[55px] flex items-center justify-center   bg-no-repeat bg-cover drop-shadow-xl text-sm text-white`}
+          >
+            {t("text2")}
           </div>
         </section>
       </div>
