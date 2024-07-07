@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, FC } from "react";
 import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
@@ -12,20 +12,42 @@ interface ExperienceProps extends SegmentComponentProps {}
 
 import BigPhone from "/public/asset/banner/big-phone.png";
 import { useTranslations } from "next-intl";
+import { useGetCurrentLanguageBasedUrl } from "../../services";
+import { AnimatedText } from "../text-container";
 
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
   appHeaderRef,
   onView,
+  languages,
 }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
   const t = useTranslations("index");
+  const currentLang = useGetCurrentLanguageBasedUrl({});
   useEffect(() => {
     if (inView1) {
       onView();
       window.scrollTo(0, 0);
     }
   }, [inView1]);
+  const CurrentLang: FC = () => {
+    if (languages?.length)
+      return languages.map((lang, index) => {
+        if (lang.title.toLowerCase() === currentLang) {
+          return (
+            <Image
+              key={index}
+              className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
+              src={lang.flag}
+              width={24}
+              height={24}
+              alt="flag"
+              unoptimized
+            />
+          );
+        } else return null;
+      });
+  };
 
   return (
     <Container1 bg="bg-gray-100">
@@ -40,14 +62,8 @@ const Experience: FunctionComponent<ExperienceProps> = ({
           }`}
         >
           <div className="w-fit flex gap-x-2 py-1 px-2 bg-white rounded-3xl">
-            <Image
-              className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
-              src={uaeFlag.src}
-              width={24}
-              height={24}
-              alt="flag"
-              unoptimized
-            />
+            <CurrentLang />
+
             <p className="text-lg">{t("experience.UnitedArabEmirates")}</p>
           </div>
           <div>
@@ -77,13 +93,14 @@ const Experience: FunctionComponent<ExperienceProps> = ({
             style={{ backgroundImage: `url(${container_1.src})` }}
             className={`absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center   bg-no-repeat bg-cover drop-shadow-xl text-sm`}
           >
-            {t("text1")}
+            <AnimatedText text={t("text1")} delay={100} />
+            {/* {t("text1")} */}
           </div>
           <div
             style={{ backgroundImage: `url(${container_2.src})` }}
             className={`absolute right-[11%] top-[20%] w-[236px]  h-[55px] flex items-center justify-center   bg-no-repeat bg-cover drop-shadow-xl text-sm text-white`}
           >
-            {t("text2")}
+            <AnimatedText text={t("text2")} delay={1500} />
           </div>
         </section>
       </div>

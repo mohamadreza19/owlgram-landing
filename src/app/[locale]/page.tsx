@@ -147,6 +147,7 @@ export default function Home() {
             appHeaderRef={appHeaderRef}
             id={menu[index].id}
             key={index}
+            languages={languages.data}
           />
         );
       })}

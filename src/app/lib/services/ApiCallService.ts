@@ -1,6 +1,10 @@
 import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { AllLanguagesResponse, ServicesResponse } from "../shared";
+import {
+  AllLanguagesResponse,
+  OsDownloadsResponse,
+  ServicesResponse,
+} from "../shared";
 export const queryClient = new QueryClient();
 const base_url = "https://owlegram.com:2053/";
 class ApiCallService {
@@ -16,6 +20,12 @@ class ApiCallService {
     language_id: string
   ): Promise<ServicesResponse> => {
     return (await this.$axios.get("getService?language_id=" + language_id))
+      .data;
+  };
+  static getOsDownloadsByIdLanguageId = async (
+    language_id: string
+  ): Promise<OsDownloadsResponse> => {
+    return (await this.$axios.get("getDownload?language_id=" + language_id))
       .data;
   };
 }

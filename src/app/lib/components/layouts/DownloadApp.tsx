@@ -16,17 +16,30 @@ import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
+import { AnimatedText } from "../text-container";
+import { useSelector } from "react-redux";
+
+import { useQuery } from "@tanstack/react-query";
+import { ApiCallService } from "../../services";
+import { getLocale } from "../../features/locale";
+import Link from "next/link";
 
 interface DownloadAppProps extends SegmentComponentProps {}
 
 const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
   const t = useTranslations("index");
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const locale = useSelector(getLocale);
+  const osDownloads = useQuery({
+    queryKey: ["downloads", locale.id],
+    queryFn: () => ApiCallService.getOsDownloadsByIdLanguageId(locale.id),
+  });
   useEffect(() => {
     if (inView1) {
       onView();
     }
   }, [inView1]);
+
   return (
     <Container1 bg="bg-gray-100">
       <div ref={ref} id={id} className="flex pt-52 flex-col md:pb-0 pb-8">
@@ -43,8 +56,26 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
             properly functioning kitchen
           </div>
         </section>
-        <section className="flex md:flex-row flex-col items-center gap-y-6 justify-center pt-5">
-          <div
+        <section className="flex flex-wrap md:flex-row flex-col gap-[24px]  items-center justify-center pt-5">
+          {osDownloads.data &&
+            osDownloads.data.map((os, index) => (
+              <Link
+                key={index}
+                href={os.link || ""}
+                className="flex  items-center py-2 w-[230px] min-w-[230px] h-[75px] max-w-[230px]   px-[20px]  bg-[#FFFFFF] rounded-[104px] overflow-hidden"
+              >
+                <Image src={os.image} width={47} height={47} alt={"os"} />
+                <div className="w-fit h-fit ps-3 text-nowrap">
+                  <p className="text-base font-light">
+                    {t("download-app.downloadOnThe")}
+                  </p>
+                  <p className="text-[21px] font-bold text-center">
+                    {os.product}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          {/* <div
             style={{
               width: playStore.width,
               height: playStore.height,
@@ -52,7 +83,9 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
             }}
             className="pl-[75px] pr-[20px] flex justify-center items-center flex-col"
           >
-            <p className="text-base font-light">Download on the </p>
+            <p className="text-base font-light">
+              {t("download-app.downloadOnThe")}
+            </p>
             <p className="text-[21px] font-bold">Google play</p>
           </div>
           <div
@@ -65,7 +98,7 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
           >
             <p className="text-base font-light">Download on the </p>
             <p className="text-[21px] font-bold">Apple store</p>
-          </div>
+          </div> */}
         </section>
         <section className="w-full flex justify-center relative">
           <Image
@@ -103,7 +136,7 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
               inView1 && "animate__slideInRight"
             }`}
           >
-            {t("text1")}
+            <AnimatedText text={t("text1")} delay={1000} />
           </div>
           <div
             style={{ backgroundImage: `url(${container_2.src})` }}
@@ -111,7 +144,7 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
               inView1 && "animate__slideInRight"
             }`}
           >
-            {t("text2")}
+            <AnimatedText text={t("text2")} delay={2500} />
           </div>
         </section>
       </div>

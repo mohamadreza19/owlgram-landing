@@ -38,17 +38,45 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
     queryKey: ["services", locale.id],
     queryFn: () => ApiCallService.getServiceByIdLanguageId(locale.id),
   });
-  
+
   const t = useTranslations("index");
   useEffect(() => {
     if (inView1) {
       onView();
     }
   }, [inView1]);
-  return (
-    <Container1 bg="bg-gray-100">
-      <div ref={ref} id={id} className="w-full pt-52">
-        <section
+  if (services.data)
+    return (
+      <Container1 bg="bg-gray-100">
+        <div
+          ref={ref}
+          id={id}
+          className="w-full pt-52 grid   cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-4"
+        >
+          {services.data.map((item, index) => {
+            console.log({ item });
+            return (
+              <CustomContainer
+                key={index}
+                imageToBackground={{
+                  height: 216,
+                  width: 383,
+                  src: item.media,
+                  blurDataURL: item.media,
+                  blurHeight: 216,
+                  blurWidth: 383,
+                }}
+                type="medium"
+                bg="bg-white"
+              >
+                <p className="text-[31px] font-bold pt-[151px] text-black z-[2]">
+                  {item.content}
+                </p>
+              </CustomContainer>
+            );
+          })}
+
+          {/* <section
           className={` flex flex-col items-center  animate__animated ${
             inView1 && "   animate__backInRight"
           } `}
@@ -197,10 +225,10 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
               </div>
             </CustomContainer>
           </div>
-        </section>
-      </div>
-    </Container1>
-  );
+        </section> */}
+        </div>
+      </Container1>
+    );
 };
 
 interface CustomContainerProps {
@@ -236,12 +264,12 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  " +
+          "mt-4 mx-auto md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
           bg
         }
       >
         <Image
-          className="absolute -right-1 top-3"
+          className="absolute left-0 top-0 !h-full"
           alt="imageToBackground"
           {...imageToBackground}
         />
