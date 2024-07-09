@@ -20,7 +20,7 @@ import { AnimatedText } from "../text-container";
 import { useSelector } from "react-redux";
 
 import { useQuery } from "@tanstack/react-query";
-import { ApiCallService } from "../../services";
+import { ApiCallService, useLocale } from "../../services";
 import { getLocale } from "../../features/locale";
 import Link from "next/link";
 import { unstable_setRequestLocale } from "next-intl/server";
@@ -30,7 +30,7 @@ interface DownloadAppProps extends SegmentComponentProps {}
 const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
   const t = useTranslations("index");
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
-  const locale = useSelector(getLocale);
+  const locale = useLocale();
   const osDownloads = useQuery({
     queryKey: ["downloads", locale.id],
     queryFn: () => ApiCallService.getOsDownloadsByIdLanguageId(locale.id),

@@ -7,30 +7,23 @@ import closeModalIcon from "/public/asset/svg/close-modal.svg";
 import messenger from "/public/asset/faq/messenger.svg";
 import Image from "next/image";
 import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
+import { QuestionAnswer, SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { ApiCallService, useLocale } from "../../services";
+import { useQuery } from "@tanstack/react-query";
 
 interface FaqProps extends SegmentComponentProps {}
 
-type FaqT = {
-  title: string;
-  body: string;
-};
-const faqs: FaqT[] = [
-  {
-    title: "Why is my account associated with a region?",
-    body: "We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,",
-  },
-  {
-    title: "Determining the region associated with your account",
-    body: "We know security and privacy are important to you – and they are important to us, too. We make it a priority to provide strong security and give you confidence that your information is safe and accessible when you need it. We’re constantly working to ensure strong security, protect your privacy,",
-  },
-];
 const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
+  const locale = useLocale();
   const t = useTranslations("index");
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const { data: questionAnswerData } = useQuery({
+    queryKey: ["getQuestionAnswerByLanguageId", locale.id],
+    queryFn: () => ApiCallService.getQuestionAnswerByLanguageId(locale.id),
+  });
 
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   function handleChoseActiveIndex(index: number) {
@@ -61,15 +54,16 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
             </p>
           </section>
           <section className="pt-6 grid grid-cols-1 gap-y-4">
-            {faqs.map((faq, i) => (
-              <Modal
-                key={i}
-                {...faq}
-                isActive={i === activeIndex}
-                openFn={() => handleChoseActiveIndex(i)}
-                closeFn={() => handleClearActiveIndex()}
-              />
-            ))}
+            {questionAnswerData &&
+              questionAnswerData.map((faq, i) => (
+                <Modal
+                  key={i}
+                  {...faq}
+                  isActive={i === activeIndex}
+                  openFn={() => handleChoseActiveIndex(i)}
+                  closeFn={() => handleClearActiveIndex()}
+                />
+              ))}
           </section>
         </div>
         <div className="md:w-[351px] w-full md:h-[408px] h-full bg-white rounded-2xl py-[22px] flex flex-col items-center ">
@@ -97,7 +91,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
   );
 };
 
-interface ModalProps extends FaqT {
+interface ModalProps extends QuestionAnswer {
   key: any;
   isActive: boolean;
   openFn: () => void;
@@ -105,8 +99,8 @@ interface ModalProps extends FaqT {
 }
 
 const Modal: FunctionComponent<ModalProps> = ({
-  body,
-  title,
+  question,
+  answer,
   isActive,
   openFn,
   closeFn,
@@ -124,7 +118,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       className="modal lg:w-[727px] md:w-[w-full] w-full  bg-white rounded-[10px] min-h-[57px] px-3 py-4 flex flex-col justify-center cursor-pointer"
     >
       <div className="flex justify-between">
-        <p className="text-base font-semibold ">{title}</p>
+        <p className="text-base font-semibold ">{question}</p>
         {!isActive ? (
           <Image
             className="cursor-pointer"
@@ -146,7 +140,7 @@ const Modal: FunctionComponent<ModalProps> = ({
           isActive && "py-[18px] max-h-fit"
         }`}
       >
-        <p>{body}</p>
+        <p>{answer}</p>
       </div>
     </div>
   );

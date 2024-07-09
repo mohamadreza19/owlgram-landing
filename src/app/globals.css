@@ -27,6 +27,15 @@ html {
 .animation-delay-1000 {
   animation-delay: 1s;
 }
+.team-c {
+}
+.team-tooltip {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.team-c:hover .team-tooltip {
+  opacity: 1;
+}
 @media screen and (max-width: 500px) {
   .animate__animated {
     animation: none !important;

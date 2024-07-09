@@ -27,14 +27,14 @@ import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { getLocale } from "../../features/locale";
-import { ApiCallService } from "../../services";
+import { ApiCallService, useLocale } from "../../services";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface ServicesProps extends SegmentComponentProps {}
 
 const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
-  const locale = useSelector(getLocale);
+  const locale = useLocale();
   const services = useQuery({
     queryKey: ["services", locale.id],
     queryFn: () => ApiCallService.getServiceByIdLanguageId(locale.id),

@@ -8,10 +8,17 @@ import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { ApiCallService, useLocale } from "../../services";
+import { useQuery } from "@tanstack/react-query";
 interface FooterProps extends SegmentComponentProps {}
 
 const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
   const t = useTranslations("index");
+  const locale = useLocale();
+  const { data: questionAnswerData } = useQuery({
+    queryKey: ["getQuestionAnswerByLanguageId", locale.id],
+    queryFn: () => ApiCallService.getQuestionAnswerByLanguageId(locale.id),
+  });
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
   useEffect(() => {
     if (inView1) {

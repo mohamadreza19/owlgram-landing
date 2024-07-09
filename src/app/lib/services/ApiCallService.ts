@@ -3,7 +3,9 @@ import axios from "axios";
 import {
   AllLanguagesResponse,
   OsDownloadsResponse,
+  QuestionAnswerResponse,
   ServicesResponse,
+  TeamsResponse,
 } from "../shared";
 export const queryClient = new QueryClient();
 const base_url = "https://owlegram.com:2053/";
@@ -26,6 +28,17 @@ class ApiCallService {
     language_id: string
   ): Promise<OsDownloadsResponse> => {
     return (await this.$axios.get("getDownload?language_id=" + language_id))
+      .data;
+  };
+  static getTeamByLanguageId = async (
+    language_id: string
+  ): Promise<TeamsResponse> => {
+    return (await this.$axios.get("getTeam?language_id=" + language_id)).data;
+  };
+  static getQuestionAnswerByLanguageId = async (
+    language_id: string
+  ): Promise<QuestionAnswerResponse> => {
+    return (await this.$axios.get("questionAnswer?language_id=" + language_id))
       .data;
   };
 }

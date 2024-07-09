@@ -23,6 +23,15 @@ export type OSDownload = {
   link: string;
   os_name: string;
 };
+export type Team = {
+  name: string;
+  image: string;
+  side: string;
+};
+export type QuestionAnswer = {
+  question: string;
+  answer: string;
+};
 
 export interface IntlParamsI {
   params: {
@@ -31,3 +40,5 @@ export interface IntlParamsI {
 }
 export type ServicesResponse = Service[];
 export type OsDownloadsResponse = OSDownload[];
+export type TeamsResponse = Team[];
+export type QuestionAnswerResponse = QuestionAnswer[];
