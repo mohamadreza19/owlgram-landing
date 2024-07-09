@@ -1,4 +1,5 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import {
   FunctionComponent,
@@ -19,8 +20,8 @@ import {
   Team,
   WhyChose,
 } from "../lib/components";
-import { Language, SegmentComponentProps } from "../lib/shared";
-import { getLocale } from "next-intl/server";
+import { IntlParamsI, Language, SegmentComponentProps } from "../lib/shared";
+import { getLocale, unstable_setRequestLocale } from "next-intl/server";
 import { defaultLocale, locales, useRouter } from "@/navigation";
 import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -31,6 +32,7 @@ import { ApiCallService } from "../lib/services";
 interface IComponent {
   component: FunctionComponent<SegmentComponentProps>;
 }
+interface IHome extends IntlParamsI {}
 
 const components: IComponent[] = [
   {
@@ -56,7 +58,7 @@ const components: IComponent[] = [
   },
 ];
 
-export default function Home() {
+export default function Home({ params }: IHome) {
   const [activeIndex, setActiveIndex] = useState(0);
   const appHeaderRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("index");
@@ -128,6 +130,7 @@ export default function Home() {
   function handleSetActiveIndex(index: number) {
     setActiveIndex(index);
   }
+
   return (
     <>
       <AppHeader

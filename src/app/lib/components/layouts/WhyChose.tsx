@@ -18,6 +18,7 @@ import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "use-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 interface WhyChoseProps extends SegmentComponentProps {}
 

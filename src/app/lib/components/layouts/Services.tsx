@@ -28,6 +28,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { getLocale } from "../../features/locale";
 import { ApiCallService } from "../../services";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 interface ServicesProps extends SegmentComponentProps {}
 
@@ -54,7 +55,6 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
           className="w-full pt-52 grid   cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-4"
         >
           {services.data.map((item, index) => {
-            console.log({ item });
             return (
               <CustomContainer
                 key={index}

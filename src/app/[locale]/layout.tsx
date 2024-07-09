@@ -1,43 +1,41 @@
-import { Locales } from "@/navigation";
+import { locales } from "../../navigation";
+import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
+import { IntlParamsI } from "../lib/shared";
 
-interface LocaleLayoutProps {
+interface LocaleLayoutProps extends IntlParamsI {
   children: ReactNode;
-  params: { locale: Locales };
 }
 
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+async function getMessages(locale: string) {
+  try {
+    return (await import(`../../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+}
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: LocaleLayoutProps) {
-  const messages = await getMessages();
-
-  // useEffect(() => {
-  //   const htmlEl = document.querySelector('html') as HTMLElement;
-  //   const bodyEl = document.querySelector('body') as HTMLBodyElement;
-
-  //   switch (params.locale) {
-  //     case 'en':
-  //       bodyEl.classList.add('font-poppins');
-
-  //       break;
-  //     case 'ar':
-  //       bodyEl.classList.add('font-rubik_ar');
-  //       htmlEl.dir = 'rtl';
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-
-  //   htmlEl.lang = params.locale;
-  // }, [params.locale]);
-
+  const messages = await getMessages(locale);
   return (
-    <NextIntlClientProvider messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider
+          timeZone="Europe/Vienna"
+          now={new Date()}
+          locale={locale}
+          messages={messages}
+        >
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

@@ -23,6 +23,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ApiCallService } from "../../services";
 import { getLocale } from "../../features/locale";
 import Link from "next/link";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 interface DownloadAppProps extends SegmentComponentProps {}
 

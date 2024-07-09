@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FunctionComponent, useEffect, FC } from "react";
 import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
+import { IntlParamsI, SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 
 import uaeFlag from "/public/asset/flag/uae.svg";
@@ -14,6 +14,7 @@ import BigPhone from "/public/asset/banner/big-phone.png";
 import { useTranslations } from "next-intl";
 import { useGetCurrentLanguageBasedUrl } from "../../services";
 import { AnimatedText } from "../text-container";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
@@ -22,6 +23,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
   languages,
 }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+
   const t = useTranslations("index");
   const currentLang = useGetCurrentLanguageBasedUrl({});
   useEffect(() => {

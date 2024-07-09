@@ -3,8 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import "animate.css/animate.min.css";
 import { FC, FunctionComponent, ReactNode } from "react";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+
 import { ClientProviders } from "./lib/services";
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -18,9 +17,8 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
-  const messages = await getMessages();
   return (
-    <html lang="en">
+    <html>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

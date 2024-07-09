@@ -208,6 +208,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
         >
           {options.map((flag, i2) => (
             <Selecteditem
+              key={i2}
               isActive={handleActiveLanguage(flag.title)}
               onClick={() => {}}
               {...flag}

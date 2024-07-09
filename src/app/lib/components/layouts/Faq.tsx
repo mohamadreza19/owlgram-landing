@@ -10,6 +10,7 @@ import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 interface FaqProps extends SegmentComponentProps {}
 

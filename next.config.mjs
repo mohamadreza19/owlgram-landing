@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   reactStrictMode: false,
-  // output: "export",
+  output: "export",
   skipTrailingSlashRedirect: true,
   trailingSlash: true,
   // distDir: "dist",

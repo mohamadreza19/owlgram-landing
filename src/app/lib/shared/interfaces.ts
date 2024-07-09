@@ -23,5 +23,11 @@ export type OSDownload = {
   link: string;
   os_name: string;
 };
+
+export interface IntlParamsI {
+  params: {
+    locale: string;
+  };
+}
 export type ServicesResponse = Service[];
 export type OsDownloadsResponse = OSDownload[];
