@@ -12,9 +12,10 @@ interface ExperienceProps extends SegmentComponentProps {}
 
 import BigPhone from "/public/asset/banner/big-phone.png";
 import { useTranslations } from "next-intl";
-import { useGetCurrentLanguageBasedUrl } from "../../services";
+import { ApiCallService, useGetCurrentLanguageBasedUrl } from "../../services";
 import { AnimatedText } from "../text-container";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { useQuery } from "@tanstack/react-query";
 
 const Experience: FunctionComponent<ExperienceProps> = ({
   id,
@@ -26,29 +27,28 @@ const Experience: FunctionComponent<ExperienceProps> = ({
 
   const t = useTranslations("index");
   const currentLang = useGetCurrentLanguageBasedUrl({});
+  const { data: userData } = useQuery({
+    queryKey: ["userData", currentLang],
+    queryFn: () => ApiCallService.getUserInfo(),
+  });
+
   useEffect(() => {
     if (inView1) {
       onView();
       window.scrollTo(0, 0);
     }
   }, [inView1]);
-  const CurrentLang: FC = () => {
-    if (languages?.length)
-      return languages.map((lang, index) => {
-        if (lang.title.toLowerCase() === currentLang) {
-          return (
-            <Image
-              key={index}
-              className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
-              src={lang.flag}
-              width={24}
-              height={24}
-              alt="flag"
-              unoptimized
-            />
-          );
-        } else return null;
-      });
+  const CurrentLang: FC<{ src: string }> = ({ src }) => {
+    return (
+      <Image
+        className="rounded-full min-w-6 min-h-6 max-w-6 max-h-6 object-cover"
+        src={src}
+        width={24}
+        height={24}
+        alt="flag"
+        unoptimized
+      />
+    );
   };
 
   return (
@@ -59,21 +59,22 @@ const Experience: FunctionComponent<ExperienceProps> = ({
         className=" w-full flex flex-col justify-center items-center pt-8"
       >
         <section
-          className={`md:w-[563px] w-full flex flex-col items-center animate__animated animation-delay-1000 ${
+          className={`md:w-[572px] w-full flex flex-col items-center animate__animated animation-delay-1000 ${
             inView1 && "animate__fadeIn"
           }`}
         >
           <div className="w-fit flex gap-x-2 py-1 px-2 bg-white rounded-3xl">
-            <CurrentLang />
+            {userData?.flag && <CurrentLang src={userData?.flag} />}
 
-            <p className="text-lg">{t("experience.UnitedArabEmirates")}</p>
+            {/* <p className="text-lg">{t("experience.UnitedArabEmirates")}</p> */}
+            <p className="text-lg">{userData?.countryNameInEn}</p>
           </div>
           <div>
-            <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
+            <p className="md:text-[56px] text-[35px] font-normal text-center break-all">
               {t("experience.UseOurNewPlatform")}
             </p>
 
-            <p className="md:text-[56px] text-[35px] font-normal text-nowrap">
+            <p className="md:text-[56px] text-[35px] font-normal  text-center break-all">
               {t("experience.forBetter")}
               <span className="inline-block ms-5 font-bold text-teal-700">
                 {t("experience.experience")}
@@ -81,7 +82,7 @@ const Experience: FunctionComponent<ExperienceProps> = ({
             </p>
           </div>
           <div>
-            <p className="text-center text-lg font-light">
+            <p className=" text-lg font-light  text-center break-all">
               {t("experience.paragraph1")}
             </p>
           </div>

@@ -2,6 +2,9 @@ import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import {
   AllLanguagesResponse,
+  ClientInfoResponse,
+  FindIpResponse,
+  LocationInfo,
   OsDownloadsResponse,
   QuestionAnswerResponse,
   ServicesResponse,
@@ -40,6 +43,33 @@ class ApiCallService {
   ): Promise<QuestionAnswerResponse> => {
     return (await this.$axios.get("questionAnswer?language_id=" + language_id))
       .data;
+  };
+  static getUserInfo = async (): Promise<ClientInfoResponse> => {
+    let userInfo: ClientInfoResponse = {
+      countryNameInEn: "",
+      ip: "",
+      flag: "",
+    };
+    // Get Ip
+    const userIpInfo = (await this.$axios.get("https://api.country.is"))
+      .data as FindIpResponse;
+    // Get Country Flag By Code
+    // const countryFlag = (
+    //   await this.$axios.get(
+    //     `https://purecatamphetamine.github.io/country-flag-icons/3x2/${userIpInfo.country}.svg`
+    //   )
+    // ).data as string;
+    //  Get Country Info By Id
+    const locationInfoInfo = (
+      await this.$axios.get(`https://freeipapi.com/api/json/${userIpInfo.ip}`)
+    ).data as LocationInfo;
+
+    // Collect data to  userInfo_OBJ
+    userInfo.ip = userIpInfo.ip;
+    userInfo.flag = `https://purecatamphetamine.github.io/country-flag-icons/3x2/${userIpInfo.country}.svg`;
+    userInfo.countryNameInEn = locationInfoInfo.countryName;
+
+    return userInfo;
   };
 }
 

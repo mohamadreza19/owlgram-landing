@@ -42,3 +42,28 @@ export type ServicesResponse = Service[];
 export type OsDownloadsResponse = OSDownload[];
 export type TeamsResponse = Team[];
 export type QuestionAnswerResponse = QuestionAnswer[];
+export type FindIpResponse = {
+  ip: string;
+  country: string;
+};
+export type LocationInfo = {
+  ipVersion: number;
+  ipAddress: string;
+  latitude: number;
+  longitude: number;
+  countryName: string;
+  countryCode: string;
+  timeZone: string;
+  zipCode: string;
+  cityName: string;
+  regionName: string;
+  isProxy: boolean;
+  continent: string;
+  continentCode: string;
+};
+
+export type ClientInfoResponse = {
+  countryNameInEn: string;
+  ip: string;
+  flag: string;
+};
