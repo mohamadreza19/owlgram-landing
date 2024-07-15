@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect } from "react";
 import owlgramLogo from "/public/main-logo.svg";
-import qrCode from "/public/asset/qr-code.png";
+import qrCode from "/public/asset/qr-code.svg";
 import content from "/public/asset/content.png";
 import Image from "next/image";
 import { Container1 } from "../containers";
@@ -8,18 +8,25 @@ import { SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { ApiCallService, useLocale } from "../../services";
+import { ApiCallService, Email, useLocale } from "../../services";
 import { useQuery } from "@tanstack/react-query";
 interface FooterProps extends SegmentComponentProps {}
 
 const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
   const t = useTranslations("index");
   const locale = useLocale();
-  const { data: questionAnswerData } = useQuery({
-    queryKey: ["getQuestionAnswerByLanguageId", locale.id],
-    queryFn: () => ApiCallService.getQuestionAnswerByLanguageId(locale.id),
+
+  const { data } = useQuery({
+    queryKey: ["getContactUs", locale.id],
+    queryFn: () => ApiCallService.getContactUsByLanguageId(locale.id),
   });
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+  const email = new Email({
+    body: "",
+    recipientType: "manager",
+    subject: "",
+  });
+
   useEffect(() => {
     if (inView1) {
       onView();
@@ -35,10 +42,24 @@ const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
                 {t("footer.1")}
               </p>
             </section>
-            <section className="text-lg font-medium text-white flex flex-col pt-4 gap-y-4">
-              <p> {t("footer.2")}</p>
-              <p>{t("footer.3")}</p>
-            </section>
+            {data &&
+              data.map((address, index) => {
+                return (
+                  <section
+                    key={index}
+                    className="text-lg font-medium text-white flex flex-col pt-4 gap-y-4"
+                  >
+                    <p>
+                      {" "}
+                      {t("footer.2")} {address.tel}
+                    </p>
+                    <p>
+                      {t("footer.3")} {address.address}
+                    </p>
+                  </section>
+                );
+              })}
+
             <section className="pt-[97px]">
               <Image
                 className="min-w-[113px] min-h-[71px]"
@@ -53,15 +74,22 @@ const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
           <div>
             <section className=" w-[302px] h-[296px] flex flex-col gap-y-[15px] justify-center items-center rounded-[32px] bg-[#222222] border-[9px] border-[#1C1C1C]">
               <div>
-                <Image alt="qrCode" {...qrCode} />
+                <Image
+                  className="!w-[128px] !h-[128px] rounded-[10px]"
+                  alt="qrCode"
+                  {...qrCode}
+                />
               </div>
-              <div>
-                <p className="text-base font-semibold text-white">
+              <div className="">
+                <p className="text-base font-semibold text-white text-center">
                   {t("footer.5")}
                 </p>
               </div>
               <div>
-                <button className="bg-teal2-400 w-[156px] h-[59px] text-[17px] font-semibold text-white rounded-2xl">
+                <button
+                  onClick={email.emailPopUpCaller}
+                  className="bg-teal2-400 w-[156px] h-[59px] text-[17px] font-semibold text-white rounded-2xl"
+                >
                   {t("footer.6")}
                 </button>
               </div>

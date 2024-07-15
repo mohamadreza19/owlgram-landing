@@ -38,6 +38,13 @@ export interface IntlParamsI {
     locale: string;
   };
 }
+export interface contactUs {
+  address: string;
+  tel: string;
+  lat: string;
+  long: string;
+  social_networks: [];
+}
 export type ServicesResponse = Service[];
 export type OsDownloadsResponse = OSDownload[];
 export type TeamsResponse = Team[];
@@ -67,3 +74,4 @@ export type ClientInfoResponse = {
   ip: string;
   flag: string;
 };
+export type ContactUsResponse = contactUs[];

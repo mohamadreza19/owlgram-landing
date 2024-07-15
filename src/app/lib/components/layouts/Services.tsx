@@ -21,7 +21,7 @@ import transport from "/public/asset/service/transport.svg";
 import tour from "/public/asset/service/tour.svg";
 import Image, { StaticImageData } from "next/image";
 import { Container1 } from "../containers";
-import { SegmentComponentProps } from "../../shared";
+import { SegmentComponentProps, ServicesResponse } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
@@ -59,17 +59,17 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
               <CustomContainer
                 key={index}
                 imageToBackground={{
-                  height: 216,
-                  width: 383,
+                  height: 108,
+                  width: 108,
                   src: item.media,
                   blurDataURL: item.media,
-                  blurHeight: 216,
-                  blurWidth: 383,
+                  blurHeight: 108,
+                  blurWidth: 108,
                 }}
                 type="medium"
                 bg="bg-white"
               >
-                <p className="text-[31px] font-bold pt-[151px] text-black z-[2]">
+                <p className="text-lg font-light  pt-[16px] text-black z-[2]">
                   {item.content}
                 </p>
               </CustomContainer>
@@ -268,11 +268,8 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
           bg
         }
       >
-        <Image
-          className="absolute left-0 top-0 !h-full"
-          alt="imageToBackground"
-          {...imageToBackground}
-        />
+        <Image className=" " alt="imageToBackground" {...imageToBackground} />
+
         {children}
       </div>
     );

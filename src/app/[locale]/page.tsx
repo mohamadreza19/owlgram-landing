@@ -80,7 +80,7 @@ export default function Home({ params }: IHome) {
             if (item.title.toLowerCase() === locale) dispatch(setLocale(item));
           });
 
-          if (locale === "ar") {
+          if (locale === "ar" || locale === "fa") {
             body.classList.remove("font-poppins");
             body.classList.add("font-rubik_ar");
             body.dir = "rtl";

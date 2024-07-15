@@ -5,3 +5,4 @@ export { default as ApiCallService } from "./ApiCallService";
 export { default as useGetCurrentLanguageBasedUrl } from "./useGetCurrentLanguageBasedUrl";
 export { default as useLocale } from "./useLocale";
 export { default as useDirection } from "./useDirection";
+export { default as Email } from "./Email";

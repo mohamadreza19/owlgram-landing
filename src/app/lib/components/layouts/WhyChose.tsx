@@ -21,11 +21,15 @@ import { useTranslations } from "use-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 interface WhyChoseProps extends SegmentComponentProps {}
-
+const elIdtoScroll = "#download";
 const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
   const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
 
   const t = useTranslations("index");
+  function scrollToDownloadApp() {
+    const element = document.querySelector(elIdtoScroll) as HTMLElement;
+    element.scrollIntoView();
+  }
 
   useEffect(() => {
     if (inView1) {
@@ -151,7 +155,10 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
               <p className="text-[34px] font-semibold text-white">
                 {t("why-chose.productFeatures.productFeatures")}
               </p>
-              <button className="text-white bg-teal2-400 mt-3 ms-auto py-[16px]   px-[26px] flex gap-x-2 justify-center items-center rounded-[9px]">
+              <button
+                onClick={scrollToDownloadApp}
+                className="text-white bg-teal2-400 mt-3 ms-auto py-[16px]   px-[26px] flex gap-x-2 justify-center items-center rounded-[9px]"
+              >
                 {t("why-chose.productFeatures.viewMore")}
                 <svg
                   className="md"

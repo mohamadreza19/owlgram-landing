@@ -11,7 +11,7 @@ import { QuestionAnswer, SegmentComponentProps } from "../../shared";
 import { useInView } from "react-intersection-observer";
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { ApiCallService, useLocale } from "../../services";
+import { ApiCallService, Email, useLocale } from "../../services";
 import { useQuery } from "@tanstack/react-query";
 
 interface FaqProps extends SegmentComponentProps {}
@@ -26,12 +26,18 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
   });
 
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
+  const email = new Email({
+    body: "",
+    recipientType: "support",
+    subject: "",
+  });
   function handleChoseActiveIndex(index: number) {
     setActiveIndex(index);
   }
   function handleClearActiveIndex() {
     setActiveIndex(null);
   }
+
   useEffect(() => {
     if (inView1) {
       onView();
@@ -49,8 +55,7 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
           <section>
             <p className="font-bold text-[48px] text-white">{t("faq.faq")}</p>
             <p className="max-w-[560px] text-white text-lg font-light">
-              To the home cook, having the right pots and pans is essential for
-              a properly functioning kitchen
+              {t("faq.paragraph1")}
             </p>
           </section>
           <section className="pt-6 grid grid-cols-1 gap-y-4">
@@ -81,7 +86,10 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
             </p>
           </div>
           <div>
-            <button className="mt-5 bg-teal2-500 w-[235px] h-[54px] rounded-[9px] text-lg font-semibold text-white">
+            <button
+              onClick={email.emailPopUpCaller}
+              className="mt-5 bg-teal2-500 w-[235px] h-[54px] rounded-[9px] text-lg font-semibold text-white"
+            >
               {t("faq.text2")}
             </button>
           </div>

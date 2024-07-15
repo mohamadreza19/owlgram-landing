@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   AllLanguagesResponse,
   ClientInfoResponse,
+  ContactUsResponse,
   FindIpResponse,
   LocationInfo,
   OsDownloadsResponse,
@@ -24,8 +25,26 @@ class ApiCallService {
   static getServiceByIdLanguageId = async (
     language_id: string
   ): Promise<ServicesResponse> => {
-    return (await this.$axios.get("getService?language_id=" + language_id))
-      .data;
+    const data = (
+      await this.$axios.get("getService?language_id=" + language_id)
+    ).data;
+
+    return shuffleArray(data);
+
+    function shuffleArray(array: ServicesResponse) {
+      let shuffledArray = array.slice(); // Make a copy of the array to avoid modifying the original
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        // Generate a random index between 0 and i (inclusive)
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements at indices i and j
+        [shuffledArray[i], shuffledArray[j]] = [
+          shuffledArray[j],
+          shuffledArray[i],
+        ];
+      }
+      return shuffledArray;
+    }
   };
   static getOsDownloadsByIdLanguageId = async (
     language_id: string
@@ -70,6 +89,12 @@ class ApiCallService {
     userInfo.countryNameInEn = locationInfoInfo.countryName;
 
     return userInfo;
+  };
+
+  static getContactUsByLanguageId = async (
+    language_id: string
+  ): Promise<ContactUsResponse> => {
+    return (await this.$axios.get("contactUs?language_id=" + language_id)).data;
   };
 }
 

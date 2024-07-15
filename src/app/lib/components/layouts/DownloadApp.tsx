@@ -67,6 +67,7 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ id, onView }) => {
               >
                 <Image src={os.image} width={47} height={47} alt={"os"} />
                 <div className="w-fit h-fit ps-3 text-nowrap">
+                  
                   <p className="text-base font-light">
                     {t("download-app.downloadOnThe")}
                   </p>
