@@ -49,10 +49,22 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
   if (services.data)
     return (
       <Container1 bg="bg-gray-100">
+        <section
+          className={`pt-52 flex flex-col items-center  animate__animated ${
+            inView1 && "   animate__backInRight"
+          } `}
+        >
+          <p className="font-extrabold text-[50px] text-center">
+            {t("services.owelgramService")}
+          </p>
+          <p className="text-lg font-light text-center max-w-[723px] leading-10">
+            {t("services.paragraph1")}
+          </p>
+        </section>
         <div
           ref={ref}
           id={id}
-          className="w-full pt-52 grid   cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-4"
+          className="w-full justify-center items-center flex flex-wrap gap-4"
         >
           {services.data.map((item, index) => {
             return (
@@ -69,163 +81,12 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
                 type="medium"
                 bg="bg-white"
               >
-                <p className="text-lg font-light  pt-[16px] text-black z-[2]">
+                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
                   {item.content}
                 </p>
               </CustomContainer>
             );
           })}
-
-          {/* <section
-          className={` flex flex-col items-center  animate__animated ${
-            inView1 && "   animate__backInRight"
-          } `}
-        >
-          <p className="font-extrabold text-[50px] text-center">
-            {t("services.owelgramService")}
-          </p>
-          <p className="text-lg font-light text-center max-w-[723px] leading-10">
-            {t("services.paragraph1")}
-          </p>
-        </section>
-        <section
-          className={`grid  cs-1:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-x-4`}
-        >
-          <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
-              inView1 && "animate__slideInLeft"
-            }`}
-          >
-            <CustomContainer
-              imageToBackground={placeholderAcademy}
-              bg="bg-white"
-              type="medium"
-            >
-              <Image alt="service" {...academy} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Academy</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-            <CustomContainer
-              imageToBackground={placeholderShop}
-              bg="bg-white"
-              type="small"
-            >
-              <Image alt="service" {...shop} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Shop</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-            <CustomContainer
-              imageToBackground={placeholderTour}
-              bg="bg-white"
-              type="medium"
-            >
-              <Image alt="service" {...tour} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Tour</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-          </div>
-          <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-900 ${
-              inView1 && "animate__fadeInUp"
-            }`}
-          >
-            <CustomContainer
-              imageToBackground={placeholderPerson}
-              bg="bg-white"
-              type="medium"
-            >
-              <Image alt="service" {...person} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Advister</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-            <CustomContainer
-              imageToBackground={mobileButtonSolid1}
-              bg="bg-teal-400"
-              type="big"
-            >
-              <div className="flex flex-col items-center relative bottom-5">
-                <Image
-                  alt="owlgramLogo"
-                  className="min-w-[250px] min-h-[219px]"
-                  {...owlgramLogo}
-                />
-                <div className="z-[2]">
-                  <p className="text-[31px] font-semibold mt-4 text-white">
-                    OWLEGRAM Service
-                  </p>
-                </div>
-              </div>
-            </CustomContainer>
-          </div>
-          <div
-            className={`w-full flex flex-col justify-center items-center gap-y-4 md:pt-0 mt-4 animate__animated animation-delay-1000 ${
-              inView1 && "animate__slideInRight"
-            }`}
-          >
-            <CustomContainer
-              imageToBackground={electricity}
-              bg="bg-white"
-              type="small"
-            >
-              <Image alt="service" {...service} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Service</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-            <CustomContainer
-              imageToBackground={placeholderCrypto}
-              bg="bg-white"
-              type="medium"
-            >
-              <Image alt="service" {...crypto} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Crypto</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-            <CustomContainer
-              imageToBackground={placeholderTranport}
-              bg="bg-white"
-              type="medium"
-            >
-              <Image alt="service" {...transport} />
-              <div className="z-[2]">
-                <p className="text-[31px] font-bold mt-4">Tranport</p>
-                <p className="text-[17px] font-light">
-                  To the home cook, having the right pots and pans is essential
-                  for a properly functioning kitchen
-                </p>
-              </div>
-            </CustomContainer>
-          </div>
-        </section> */}
         </div>
       </Container1>
     );
@@ -248,7 +109,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px]  " +
+          " md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px] " +
           bg
         }
       >
@@ -264,11 +125,18 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "mt-4 mx-auto md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
+          " md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
           bg
         }
       >
-        <Image className=" " alt="imageToBackground" {...imageToBackground} />
+        <div className="flex justify-between w-full absolute">
+          <Image className="" alt="imageToBackground" {...imageToBackground} />
+          <Image
+            className="me-6 relative bottom-4  grayscale opacity-[0.10] scale-[2.3]"
+            alt="imageToBackground"
+            {...imageToBackground}
+          />
+        </div>
 
         {children}
       </div>

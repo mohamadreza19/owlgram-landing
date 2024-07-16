@@ -13,6 +13,8 @@ import Banner6 from "/public/asset/banner/banner-chat.png";
 import Mobile from "/public/asset/logos/mobile.svg";
 import Translate from "/public/asset/logos/translate.svg";
 import Bitcoin from "/public/asset/logos/bitcoin.svg";
+import ChatLogo from "/public/asset/logos/chat.svg";
+import CallLogo from "/public/asset/logos/call.svg";
 
 import { Container1 } from "../containers";
 import { SegmentComponentProps } from "../../shared";
@@ -38,7 +40,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
   }, [inView1]);
   return (
     <Container1 bg="bg-gray-100">
-      <div ref={ref} id={id} className="pt-[120px] flex flex-col  ltr">
+      <div ref={ref} id={id} className="pt-[120px] flex flex-col   ltr">
         <section
           className={`flex  flex-col justify-center items-center animate__animated animation-delay-600 ${
             inView1 && "animate__fadeIn"
@@ -64,6 +66,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
               width={Banner2.width}
               height={Banner2.height}
               src={Banner2.src}
+              type="medium"
             >
               <div className="pt-[24px] ps-[40px] pe-[27px]">
                 <Image className="pb-2 " {...Mobile} />
@@ -78,8 +81,9 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
               width={Banner1.width}
               height={Banner1.height}
               src={Banner1.src}
+              type="medium"
             >
-              <div className="pt-[273px] ps-[40px] pe-[27px]">
+              <div className="lg:pt-[273px] pt-[170px] ps-[40px] pe-[27px]">
                 <Image className="pb-2 " {...Bitcoin} />
                 <Title type="medium"> {t("why-chose.payment.payment")}</Title>
 
@@ -93,11 +97,13 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
             width={Banner3.width}
             height={Banner3.height}
             src={Banner3.src}
-            className={`w-full md:block hidden !min-w-full h-[296px]  animate__animated animation-delay-1000 ${
+            className={`w-full cs-2:block hidden !min-w-full h-[296px]  animate__animated animation-delay-1000 ${
               inView1 && "animate__fadeInUp"
             }`}
+            type="long"
           >
-            <div className="pt-[104px] ps-[40px] pe-[27px]">
+            <div className="pt-[23px] ps-[40px] pe-[27px]">
+              <Image {...Translate} className="pb-2 " />
               <Title type="medium"> {t("why-chose.transfer.transfer")}</Title>
 
               <p className="text-[18px] font-light max-w-[524px]">
@@ -106,10 +112,11 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
             </div>
           </ImageContainer>
           <ImageContainer
+            type="long"
             width={Banner3Mobile.width}
             height={Banner3Mobile.height}
             src={Banner3Mobile.src}
-            className={`w-full  md:hidden  !min-w-full   animate__animated animation-delay-1000 ${
+            className={`w-full mx-auto  cs-2:hidden  !min-w-full   animate__animated animation-delay-1000 ${
               inView1 && "animate__fadeInUp"
             }`}
           >
@@ -126,16 +133,21 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
 
           <div
             className={
-              "grid cs-2:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto justify-center gap-y-4  gap-x-4"
+              "grid cs-2:grid-cols-3 lg:grid-cols-2 grid-cols-1 mx-auto justify-center gap-y-4  gap-x-4"
             }
           >
             <ImageContainer
+              type="small"
               width={Banner6.width}
               height={Banner6.height}
               src={Banner6.src}
               className=" max-w-[383px]  max-h-[300px]"
             >
-              <div className="pt-[189px] px-[14px] ">
+              <div className="lg:pt-[131px] pt-[149px]  px-[14px] ">
+                <Image
+                  {...ChatLogo}
+                  className="pb-2 lg:!w-[50px] lg:!h-[50px] "
+                />
                 <Title type="small">
                   {t("why-chose.Chat&Group.Chat&Group")}
                 </Title>
@@ -147,6 +159,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
             </ImageContainer>
 
             <ImageContainer
+              type="small"
               width={Banner5.width}
               height={Banner5.height}
               src={Banner5.src}
@@ -180,11 +193,16 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ id, onView }) => {
             </ImageContainer>
 
             <ImageContainer
+              type="small"
               width={Banner4.width}
               height={Banner4.height}
               src={Banner4.src}
-              className=" max-w-[383px]  max-h-[300px] pt-[189px] px-[14px] mx-auto cs-2:translate-x-0  lg:translate-x-1/2   translate-x-0"
+              className=" max-w-[383px]  max-h-[300px] pt-[131px]  px-[14px] mx-auto cs-2:translate-x-0  lg:translate-x-1/2   translate-x-0"
             >
+              <Image
+                {...CallLogo}
+                className="pb-2 lg:!w-[50px] lg:!h-[50px] "
+              />
               <Title type="small">
                 {t("why-chose.Voice&VideoCall.Voice&VideoCall")}
               </Title>
@@ -206,6 +224,7 @@ interface ImageContainerProps {
   src: string;
   children: ReactNode;
   className?: string;
+  type: "medium" | "long" | "small";
 }
 
 const ImageContainer: FunctionComponent<ImageContainerProps> = ({
@@ -214,18 +233,32 @@ const ImageContainer: FunctionComponent<ImageContainerProps> = ({
   width,
   children,
   className,
+  type,
 }) => {
+  let Add_class = "";
+
+  switch (type) {
+    case "long":
+      Add_class = ` cs-2:!min-w-[1196px] cs-2:!min-h-[296px] cs-2:!max-w-[1196px] cs-2:!max-h-[296px] | lg:!min-w-[592px] lg:!min-h-[536px] lg:!max-w-[592px] lg:!max-h-[536px]`;
+      break;
+    case "medium":
+      Add_class = ` cs-2:!min-w-[592px] cs-2:!min-h-[536px] cs-2:!max-w-[592px] cs-2:!max-h-[536px] | lg:!min-w-[592px] lg:!min-h-[536px] lg:!max-w-[592px] lg:!max-h-[536px]`;
+      break;
+    case "small":
+      Add_class = ` cs-2:!min-w-[383px] cs-2:!min-h-[300px] cs-2:!max-w-[383px] cs-2:!max-h-[300px] | lg:!min-w-[383px] lg:!min-h-[300px] lg:!max-w-[383px] lg:!max-h-[300px] |`;
+      break;
+  }
   return (
     <div
       style={{
-        maxWidth: width + "px",
-        maxHeight: height + "px",
-        minWidth: width + "px",
-        minHeight: height + "px",
+        // maxWidth: width + "px",
+        // maxHeight: height + "px",
+        // minWidth: width + "px",
+        // minHeight: height + "px",
         backgroundSize: "100% 100%",
         backgroundImage: `url('${src}')`,
       }}
-      className={`cs-1:max-w[100%] !min-w-full    ${className}`}
+      className={`overflow-hidden |${Add_class}  |  cs-1:!max-w[100%]  | sm:!min-w-[354px] sm:!min-h-[400px] sm:!max-w-[354px] sm:!max-h-[400px]  ${className}`}
     >
       {children}
     </div>

@@ -35,10 +35,10 @@ const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
   return (
     <Container1 bg="bg-[#171717]">
       <footer ref={ref} id={id} className="pb-9 ">
-        <div className="w-full pt-72 flex md:flex-row flex-col items-center gap-y-4 justify-between">
+        <div className="w-full pt-72 flex cs-1:flex-row flex-col items-center gap-y-4 justify-between md:text-center text-left">
           <div>
             <section className="text-white">
-              <p className="text-[48px] font-bold max-w-[414px]">
+              <p className="text-[43px] font-bold break-all ">
                 {t("footer.1")}
               </p>
             </section>
@@ -62,7 +62,7 @@ const Footer: FunctionComponent<FooterProps> = ({ id, onView }) => {
 
             <section className="pt-[97px]">
               <Image
-                className="min-w-[113px] min-h-[71px]"
+                className="min-w-[113px] min-h-[71px] md:mx-auto me-auto"
                 alt="owlgramLogo"
                 {...owlgramLogo}
               />

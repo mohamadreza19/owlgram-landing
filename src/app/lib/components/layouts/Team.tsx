@@ -36,7 +36,7 @@ const TeamCom: FunctionComponent<TeamProps> = ({ id, onView }) => {
           <p className="font-extrabold text-[50px] text-center">
             {t("team.OWLEGRAMTeam")}
           </p>
-          <p className="md:w-[723px] w-full text-lg font-light text-center leading-10">
+          <p className="md:w-[1024px] w-full text-lg font-light text-center leading-10">
             {t("team.paragraph1")}
           </p>
         </section>
@@ -51,49 +51,6 @@ const TeamCom: FunctionComponent<TeamProps> = ({ id, onView }) => {
                 />
               );
             })}
-          {data &&
-            data.map((team, index) => {
-              return (
-                <ImageContainer
-                  key={index}
-                  isRootContainerViewed={inView1}
-                  team={team}
-                />
-              );
-            })}
-
-          {/* <Image
-            unoptimized
-            className={`rounded-[15px] md:mt-16 animate__animated animation-delay-900 ${
-              inView1 && "animate__fadeInUp"
-            }`}
-            alt="person4"
-            {...person4}
-          />
-          <Image
-            unoptimized
-            className={`rounded-[15px] animate__animated animation-delay-1000 ${
-              inView1 && "animate__fadeInUp"
-            }`}
-            alt="person3"
-            {...person3}
-          />
-          <Image
-            unoptimized
-            className={`rounded-[15px] md:mt-16 animate__animated animation-delay-1000 ${
-              inView1 && "animate__fadeInUp"
-            }`}
-            alt="person2"
-            {...person2}
-          />
-          <Image
-            unoptimized
-            className={`rounded-[15px] animate__animated animation-delay-900 ${
-              inView1 && "animate__fadeInUp"
-            }`}
-            alt="person1"
-            {...person1}
-          /> */}
         </section>
       </div>
     </Container1>
