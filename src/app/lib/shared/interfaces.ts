@@ -1,9 +1,10 @@
 import { RefObject } from "react";
 
 export interface SegmentComponentProps {
-  id: string;
+  idString: string;
   appHeaderRef?: RefObject<HTMLDivElement>;
   onView: () => void;
+  unView: () => void;
   languages?: AllLanguagesResponse;
 }
 export type Language = {

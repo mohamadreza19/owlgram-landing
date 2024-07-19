@@ -32,8 +32,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 
 interface ServicesProps extends SegmentComponentProps {}
 
-const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
-  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
   const locale = useLocale();
   const services = useQuery({
     queryKey: ["services", locale.id],
@@ -41,54 +40,52 @@ const Services: FunctionComponent<ServicesProps> = ({ id, onView }) => {
   });
 
   const t = useTranslations("index");
-  useEffect(() => {
-    if (inView1) {
-      onView();
-    }
-  }, [inView1]);
+
   if (services.data)
     return (
-      <Container1 bg="bg-gray-100">
-        <section
-          className={`pt-52 flex flex-col items-center  animate__animated ${
-            inView1 && "   animate__backInRight"
-          } `}
-        >
-          <p className="font-extrabold text-[50px] text-center">
-            {t("services.owelgramService")}
-          </p>
-          <p className="text-lg font-light text-center max-w-[723px] leading-10">
-            {t("services.paragraph1")}
-          </p>
-        </section>
-        <div
-          ref={ref}
-          id={id}
-          className="w-full justify-center items-center flex flex-wrap gap-4"
-        >
-          {services.data.map((item, index) => {
-            return (
-              <CustomContainer
-                key={index}
-                imageToBackground={{
-                  height: 108,
-                  width: 108,
-                  src: item.media,
-                  blurDataURL: item.media,
-                  blurHeight: 108,
-                  blurWidth: 108,
-                }}
-                type="medium"
-                bg="bg-white"
-              >
-                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
-                  {item.content}
-                </p>
-              </CustomContainer>
-            );
-          })}
-        </div>
-      </Container1>
+      <Container1
+        bg="bg-gray-100"
+        {...rest}
+        childrenCallback={({ inView }) => (
+          <>
+            <section
+              className={`pt-52 flex flex-col items-center  animate__animated ${
+                inView && "   animate__backInRight"
+              } `}
+            >
+              <p className="font-extrabold text-[50px] text-center">
+                {t("services.owelgramService")}
+              </p>
+              <p className="text-lg font-light text-center max-w-[723px] leading-10">
+                {t("services.paragraph1")}
+              </p>
+            </section>
+            <div className="w-full justify-center items-center flex flex-wrap gap-4">
+              {services.data.map((item, index) => {
+                return (
+                  <CustomContainer
+                    key={index}
+                    imageToBackground={{
+                      height: 108,
+                      width: 108,
+                      src: item.media,
+                      blurDataURL: item.media,
+                      blurHeight: 108,
+                      blurWidth: 108,
+                    }}
+                    type="medium"
+                    bg="bg-white"
+                  >
+                    <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                      {item.content}
+                    </p>
+                  </CustomContainer>
+                );
+              })}
+            </div>
+          </>
+        )}
+      ></Container1>
     );
 };
 

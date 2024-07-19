@@ -134,11 +134,13 @@ export default function Home({ params }: IHome) {
   return (
     <>
       <AppHeader
+        handleSetActiveIndexWhenClickMenuItem={handleSetActiveIndex}
         languages={languages.data}
         activeIndex={activeIndex}
         menu={menu}
         onView={() => {}}
-        id="app-header"
+        unView={() => {}}
+        idString="app-header"
       />
 
       {components.map((item, index) => {
@@ -147,8 +149,9 @@ export default function Home({ params }: IHome) {
         return (
           <Component
             onView={() => handleSetActiveIndex(index)}
+            unView={() => handleSetActiveIndex(index - 1)}
             appHeaderRef={appHeaderRef}
-            id={menu[index].id}
+            idString={menu[index].id}
             key={index}
             languages={languages.data}
           />

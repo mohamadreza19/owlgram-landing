@@ -15,45 +15,45 @@ import { ApiCallService, useDirection, useLocale } from "../../services";
 
 interface TeamProps extends SegmentComponentProps {}
 
-const TeamCom: FunctionComponent<TeamProps> = ({ id, onView }) => {
-  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+const TeamCom: FunctionComponent<TeamProps> = ({ ...rest }) => {
   const locale = useLocale();
   const { data } = useQuery({
     queryKey: ["getTeamByLanguageId", locale.id],
     queryFn: () => ApiCallService.getTeamByLanguageId(locale.id),
   });
   const t = useTranslations("index");
-  useEffect(() => {
-    if (inView1) {
-      onView();
-    }
-  }, [inView1]);
 
   return (
-    <Container1 bg="bg-gray-100">
-      <div ref={ref} id={id} className="w-full pt-52 pb-14">
-        <section className="flex flex-col items-center justify-center">
-          <p className="font-extrabold text-[50px] text-center">
-            {t("team.OWLEGRAMTeam")}
-          </p>
-          <p className="md:w-[1024px] w-full text-lg font-light text-center leading-10">
-            {t("team.paragraph1")}
-          </p>
-        </section>
-        <section className="flex  flex-wrap gap-4  justify-center items-center pt-16 relative">
-          {data &&
-            data.map((team, index) => {
-              return (
-                <ImageContainer
-                  key={index}
-                  isRootContainerViewed={inView1}
-                  team={team}
-                />
-              );
-            })}
-        </section>
-      </div>
-    </Container1>
+    <Container1
+      bg="bg-gray-100"
+      {...rest}
+      childrenCallback={({ inView }) => (
+        <>
+          <div className="w-full pt-52 pb-14">
+            <section className="flex flex-col items-center justify-center">
+              <p className="font-extrabold text-[50px] text-center">
+                {t("team.OWLEGRAMTeam")}
+              </p>
+              <p className="md:w-[1024px] w-full text-lg font-light text-center leading-10">
+                {t("team.paragraph1")}
+              </p>
+            </section>
+            <section className="flex  flex-wrap gap-4  justify-center items-center pt-16 relative">
+              {data &&
+                data.map((team, index) => {
+                  return (
+                    <ImageContainer
+                      key={index}
+                      isRootContainerViewed={inView}
+                      team={team}
+                    />
+                  );
+                })}
+            </section>
+          </div>
+        </>
+      )}
+    ></Container1>
   );
 };
 

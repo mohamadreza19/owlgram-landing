@@ -34,17 +34,20 @@ interface AppHeaderProps extends SegmentComponentProps {
   }[];
   activeIndex: number;
   languages: AllLanguagesResponse | undefined;
+  handleSetActiveIndexWhenClickMenuItem: (index: number) => void;
 }
 
 // font-poppins
 const AppHeader: FunctionComponent<AppHeaderProps> = ({
-  id,
+  idString,
   menu,
   activeIndex,
   languages,
+  handleSetActiveIndexWhenClickMenuItem,
 }) => {
   const [isBurgerClick, setIsBurgerClick] = useState(false);
   const selectedLocale = useSelector((state: RootState) => state.locale);
+  console.log({ activeIndex });
   const dispatch = useDispatch();
   const pathName = usePathname();
 
@@ -67,7 +70,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
 
   return (
     <>
-      <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed   flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  py-[10px] md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
+      <header className=" md:top-8 top-[18px] left-1/2 transform -translate-x-1/2  fixed   flex items-center justify-between gap-x-[55px] md:max-w-[1024px] sm:max-w-[90%]  max-w-[359px]  w-full h-[72px]  mx-auto  pt-[10px]  md:px-[16px] px-4 bg-white rounded-2xl drop-shadow-md z-10">
         <Image
           unoptimized
           width={68}
@@ -97,7 +100,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
           {menu.map((item, i) => (
             <>
               <LinkPagination
-                onClick={() => handleClick(item.id)}
+                onClick={() => handleSetActiveIndexWhenClickMenuItem(i)}
                 isActive={activeIndex === i}
                 key={i}
                 href={"/#" + item.id}
@@ -120,9 +123,16 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
           )}
         </div>
       </header>
-      <Container1 bg="bg-gray-100">
-        <div id={id} className="w-full h-24 pt-8"></div>
-      </Container1>
+
+      {/* <Container1
+        childrenCallback={() => <></>}
+        idString={idString}
+        onView={() => {}}
+        unView={() => {}}
+        bg="bg-gray-100"
+      >
+        <div id={idString} className="w-full h-24 pt-8"></div>
+      </Container1> */}
     </>
   );
 };

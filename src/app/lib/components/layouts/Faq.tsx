@@ -16,10 +16,10 @@ import { useQuery } from "@tanstack/react-query";
 
 interface FaqProps extends SegmentComponentProps {}
 
-const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
+const Faq: FunctionComponent<FaqProps> = ({ ...rest }) => {
   const locale = useLocale();
   const t = useTranslations("index");
-  const { ref: ref, inView: inView1 } = useInView({ threshold: 0 });
+
   const { data: questionAnswerData } = useQuery({
     queryKey: ["getQuestionAnswerByLanguageId", locale.id],
     queryFn: () => ApiCallService.getQuestionAnswerByLanguageId(locale.id),
@@ -38,63 +38,64 @@ const Faq: FunctionComponent<FaqProps> = ({ id, onView }) => {
     setActiveIndex(null);
   }
 
-  useEffect(() => {
-    if (inView1) {
-      onView();
-    }
-  }, [inView1]);
   return (
-    <Container1 bg="bg-gray2-500">
+    <Container1
+      bg="bg-gray2-500"
+      {...rest}
+      childrenCallback={() => (
+        <>
+          {" "}
+          <div className="w-full pt-52 pb-10 flex cs-1:flex-row  flex-col  justify-between gap-[33px]">
+            <div>
+              <section>
+                <p className="font-bold text-[48px] text-white">
+                  {t("faq.faq")}
+                </p>
+                <p className="max-w-[560px] text-white text-lg font-light">
+                  {t("faq.paragraph1")}
+                </p>
+              </section>
+              <section className="pt-6 grid grid-cols-1 gap-y-4">
+                {questionAnswerData &&
+                  questionAnswerData.map((faq, i) => (
+                    <Modal
+                      key={i}
+                      {...faq}
+                      isActive={i === activeIndex}
+                      openFn={() => handleChoseActiveIndex(i)}
+                      closeFn={() => handleClearActiveIndex()}
+                    />
+                  ))}
+              </section>
+            </div>
+            <div className="md:w-[351px] w-full md:h-[408px] h-full bg-white rounded-2xl py-[22px] flex flex-col items-center ">
+              <div>
+                <Image alt="messenger" {...messenger} />
+              </div>
+              <div>
+                <p className="text-[20px] font-bold pt-5">
+                  {t("faq.youHaveDifferentQuestion")}
+                </p>
+              </div>
+              <div>
+                <p className="text-[20px] font-normal text-center pt-4">
+                  {t("faq.text1")}
+                </p>
+              </div>
+              <div>
+                <button
+                  onClick={email.emailPopUpCaller}
+                  className="mt-5 bg-teal2-500 w-[235px] h-[54px] rounded-[9px] text-lg font-semibold text-white"
+                >
+                  {t("faq.text2")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    >
       {" "}
-      <div
-        ref={ref}
-        id={id}
-        className="w-full pt-52 pb-10 flex cs-1:flex-row  flex-col  justify-between gap-[33px]"
-      >
-        <div>
-          <section>
-            <p className="font-bold text-[48px] text-white">{t("faq.faq")}</p>
-            <p className="max-w-[560px] text-white text-lg font-light">
-              {t("faq.paragraph1")}
-            </p>
-          </section>
-          <section className="pt-6 grid grid-cols-1 gap-y-4">
-            {questionAnswerData &&
-              questionAnswerData.map((faq, i) => (
-                <Modal
-                  key={i}
-                  {...faq}
-                  isActive={i === activeIndex}
-                  openFn={() => handleChoseActiveIndex(i)}
-                  closeFn={() => handleClearActiveIndex()}
-                />
-              ))}
-          </section>
-        </div>
-        <div className="md:w-[351px] w-full md:h-[408px] h-full bg-white rounded-2xl py-[22px] flex flex-col items-center ">
-          <div>
-            <Image alt="messenger" {...messenger} />
-          </div>
-          <div>
-            <p className="text-[20px] font-bold pt-5">
-              {t("faq.youHaveDifferentQuestion")}
-            </p>
-          </div>
-          <div>
-            <p className="text-[20px] font-normal text-center pt-4">
-              {t("faq.text1")}
-            </p>
-          </div>
-          <div>
-            <button
-              onClick={email.emailPopUpCaller}
-              className="mt-5 bg-teal2-500 w-[235px] h-[54px] rounded-[9px] text-lg font-semibold text-white"
-            >
-              {t("faq.text2")}
-            </button>
-          </div>
-        </div>
-      </div>
     </Container1>
   );
 };
