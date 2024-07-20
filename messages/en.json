@@ -14,7 +14,23 @@
       "UseOurNewPlatform": "the wings of a smart and powerful bird",
       "forBetter": "A comprehensive ecosystem named",
       "experience": "OWLEGRAM",
-      "paragraph1": "A world of opportunity and a world of possibilities for all the people of the world, together"
+      "paragraph1": "A world of opportunity and a world of possibilities for all the people of the world, together",
+      "phone": {
+        "owlCity": "OWL City",
+        "Hello-Mostafa": "Hello-Mostafa",
+        "Welcome-to": "Welcome to",
+        "Have-Question": "Have-Question?",
+        "Accademy-in-OWL": "Accademy in OWL",
+        "E-learing": "E-learing",
+        "Accademy": "Accademy",
+        "Adviser": "Adviser",
+        "Tour": "Tour",
+        "Advertise": "Advertise",
+        "Services": "Services",
+        "Transport": "Transport",
+        "Shop": "Shop",
+        "Real-State": "Real State"
+      }
     },
     "why-chose": {
       "onePlatformForAll": "Do you have a smartphone?",

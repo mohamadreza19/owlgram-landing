@@ -75,8 +75,14 @@ const Experience: FunctionComponent<ExperienceProps> = ({ ...rest }) => {
               </div>
             </section>
             <section className="w-full pt-4 flex flex-col items-center  relative ">
-              <div className="w-fit">
+              <div className="w-fit relative">
                 <Image unoptimized {...BigPhone} alt="big-phone" />
+                {/* <p className="absolute text-[#343A43] text-[19px] font-bold skew left-[114px] bottom-[420px]">
+                  {t("experience.phone.owlCity")}
+                </p>
+                <p className="absolute text-[#343A43] text-[19px] font-bold skew left-[114px] bottom-[320px]">
+                  {t("experience.phone.Hello-Mostafa")}
+                </p> */}
               </div>
 
               <div

@@ -47,7 +47,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
 }) => {
   const [isBurgerClick, setIsBurgerClick] = useState(false);
   const selectedLocale = useSelector((state: RootState) => state.locale);
-  console.log({ activeIndex });
+
   const dispatch = useDispatch();
   const pathName = usePathname();
 
@@ -110,6 +110,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
             </>
           ))}
         </ul>
+
         <div className="md:hidden block cursor-pointer">
           <Image onClick={handleSetIsBurgerClick} alt="burger" {...burger} />
         </div>
@@ -209,7 +210,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
 
   return (
     <AwayListener onClickAway={closeBox}>
-      <div className="flex items-center gap-x-2 relative">
+      <div className="flex items-center gap-x-2 relative hover:bg-white">
         {/* <selectBox> */}
         <div
           className={`transition-opacity delay-300 md:opacity-0  md:hidden grid grid-cols-3 ${
@@ -268,7 +269,7 @@ const Selecteditem: FunctionComponent<Selecteditem> = ({
             isActive &&
             "md:!bg-transparent bg-white rounded-[7px] md:shadow-none shadow"
           }
-        md:w-fit  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer`}
+        md:w-fit  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer md:hover:scale-110 transition-all`}
       >
         <Image
           className="rounded-full min-w-4 min-h-4 max-w-4 max-h-4 object-fill"

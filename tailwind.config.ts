@@ -59,6 +59,7 @@ const config: Config = {
       // => @media (min-width: 1280px) { ... }
 
       "cs-1": "1412px",
+      "cs-1.9": "1435px",
       "cs-2": "1440px",
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }

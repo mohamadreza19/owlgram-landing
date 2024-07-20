@@ -43,22 +43,22 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ ...rest }) => {
         <>
           <div className="flex pt-52 flex-col md:pb-0 pb-8">
             <section
-              className={`mx-auto md:w-[543px] w-full flex flex-col items-center animate__animated ${
+              className={`mx-auto md:w-[1024px] w-full flex flex-col items-center animate__animated ${
                 inView && "animate__bounce"
               }`}
             >
               <div className="font-bold text-[48px] md:text-nowrap text-center">
                 {t("download-app.getTheOwlMobileApp")}
               </div>
-              <div className="pt-5 text-center leading-10">
-                To the home cook, having the right pots and pans is essential
-                for a properly functioning kitchen
+              <div className="pt-5 text-center leading-10 ">
+                {t("download-app.paragraph1")}
               </div>
             </section>
             <section className="flex flex-wrap md:flex-row flex-col gap-[24px]  items-center justify-center pt-5">
               {osDownloads.data &&
                 osDownloads.data.map((os, index) => (
                   <Link
+                    target="_blank"
                     key={index}
                     href={os.link || ""}
                     className="flex  items-center py-2 w-[230px] min-w-[230px] h-[75px] max-w-[230px]   px-[20px]  bg-[#FFFFFF] rounded-[104px] overflow-hidden"

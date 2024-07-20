@@ -1,47 +1,199 @@
-import { FunctionComponent, ReactNode, useEffect } from "react";
+import { FC, FunctionComponent, ReactNode, useEffect, useState } from "react";
 
 interface ServicesProps {}
-import electricity from "/public/asset/service/electricity.svg";
-import placeholderPerson from "/public/asset/service/placeholder-person.svg";
-import placeholderAcademy from "/public/asset/service/academy-placeholder.svg";
-import placeholderCrypto from "/public/asset/service/crypto-placeholder.svg";
-import mobileButtonSolid1 from "/public/asset/service/mobile-button-solid-1.svg";
-import placeholderShop from "/public/asset/service/shop-placeholder.svg";
-import placeholderTranport from "/public/asset/service/transport-placeholder.svg";
-import placeholderTour from "/public/asset/service/tour-placeholder.svg";
 
-///
-import service from "/public/asset/service/service.svg";
-import person from "/public/asset/service/person.png";
-import academy from "/public/asset/service/academy.svg";
-import crypto from "/public/asset/service/crypto.svg";
 import owlgramLogo from "/public/main-logo.svg";
-import shop from "/public/asset/service/shop.svg";
-import transport from "/public/asset/service/transport.svg";
-import tour from "/public/asset/service/tour.svg";
+
 import Image, { StaticImageData } from "next/image";
 import { Container1 } from "../containers";
-import { SegmentComponentProps, ServicesResponse } from "../../shared";
-import { useInView } from "react-intersection-observer";
+import { SegmentComponentProps, Service, ServicesResponse } from "../../shared";
+
 import { useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
-import { useSelector } from "react-redux";
-import { getLocale } from "../../features/locale";
+
 import { ApiCallService, useLocale } from "../../services";
-import { unstable_setRequestLocale } from "next-intl/server";
+
+import Solid from "/public/asset/service/mobile-button-solid-1.svg";
 
 interface ServicesProps extends SegmentComponentProps {}
 
 const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
   const locale = useLocale();
-  const services = useQuery({
+  const { data } = useQuery({
     queryKey: ["services", locale.id],
     queryFn: () => ApiCallService.getServiceByIdLanguageId(locale.id),
   });
-
+  const [list1, setList1] = useState<ServicesResponse>([]);
+  const [list2, setList2] = useState<ServicesResponse>([]);
+  const [list3, setList3] = useState<ServicesResponse>([]);
   const t = useTranslations("index");
 
-  if (services.data)
+  useEffect(() => {
+    if (data && data.length) {
+      let counter = 1;
+
+      const newList1: ServicesResponse = [];
+      const newList2: ServicesResponse = [];
+      const newList3: ServicesResponse = [];
+
+      data.forEach((item, index) => {
+        switch (counter) {
+          case 1:
+            newList1.push(item);
+            break;
+          case 2:
+            newList2.push(item);
+            break;
+          case 3:
+            newList3.push(item);
+            break;
+        }
+
+        counter = counter === 3 ? 1 : counter + 1;
+
+        if (
+          newList2.length >= newList3.length ||
+          newList2.length >= newList1.length
+        ) {
+          const lastItem = newList2.pop();
+          if (lastItem) {
+            newList3.push(lastItem);
+          }
+        }
+
+        setList1(newList1);
+        setList2(newList2);
+        setList3(newList3);
+
+        // Ensure list2 has fewer items
+      });
+    }
+
+    return () => {
+      setList1([]);
+      setList2([]);
+      setList3([]);
+    };
+  }, [data?.length, locale.id]);
+
+  const ServiceBox: FC = () => {
+    return (
+      <>
+        <div className="flex  flex-col gap-4">
+          {list1.map((item, index) => {
+            return (
+              <CustomContainer
+                key={index}
+                imageToBackground={{
+                  height: 108,
+                  width: 108,
+                  src: item.media,
+                  blurDataURL: item.media,
+                  blurHeight: 108,
+                  blurWidth: 108,
+                }}
+                type="medium"
+                bg="bg-white"
+              >
+                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                  {item.content}
+                </p>
+              </CustomContainer>
+            );
+          })}
+        </div>
+        <div className="flex  flex-col gap-4">
+          {list2.map((item, index) => {
+            if (index === list2.length - 1) {
+              return (
+                <>
+                  <CustomContainer
+                    key={index}
+                    imageToBackground={{
+                      height: 108,
+                      width: 108,
+                      src: item.media,
+                      blurDataURL: item.media,
+                      blurHeight: 108,
+                      blurWidth: 108,
+                    }}
+                    type="medium"
+                    bg="bg-white"
+                  >
+                    <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                      {item.content}
+                    </p>
+                  </CustomContainer>
+                  <CustomContainer
+                    imageToBackground={{
+                      height: 108,
+                      width: 108,
+                      src: "",
+                      blurDataURL: "",
+                      blurHeight: 108,
+                      blurWidth: 108,
+                    }}
+                    type="big"
+                    bg="bg-teal-400"
+                  >
+                    <Image className="absolute top-0 left-[18px]" {...Solid} />
+                    <Image {...owlgramLogo} className="!w-[239px] !h-[151px]" />
+                    <p className="text-[31px] font-semibold text-white pt-2">
+                      {t("services.owelgramService")}
+                    </p>
+                  </CustomContainer>
+                </>
+              );
+            } else
+              return (
+                <CustomContainer
+                  key={index}
+                  imageToBackground={{
+                    height: 108,
+                    width: 108,
+                    src: item.media,
+                    blurDataURL: item.media,
+                    blurHeight: 108,
+                    blurWidth: 108,
+                  }}
+                  type="medium"
+                  bg="bg-white"
+                >
+                  <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                    {item.content}
+                  </p>
+                </CustomContainer>
+              );
+          })}
+        </div>
+        <div className="flex  flex-col gap-4">
+          {list3.map((item, index) => {
+            return (
+              <CustomContainer
+                key={index}
+                imageToBackground={{
+                  height: 108,
+                  width: 108,
+                  src: item.media,
+                  blurDataURL: item.media,
+                  blurHeight: 108,
+                  blurWidth: 108,
+                }}
+                type="medium"
+                bg="bg-white"
+              >
+                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                  {item.content}
+                </p>
+              </CustomContainer>
+            );
+          })}
+        </div>
+      </>
+    );
+  };
+
+  if (data)
     return (
       <Container1
         bg="bg-gray-100"
@@ -60,28 +212,8 @@ const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
                 {t("services.paragraph1")}
               </p>
             </section>
-            <div className="w-full justify-center items-center flex flex-wrap gap-4">
-              {services.data.map((item, index) => {
-                return (
-                  <CustomContainer
-                    key={index}
-                    imageToBackground={{
-                      height: 108,
-                      width: 108,
-                      src: item.media,
-                      blurDataURL: item.media,
-                      blurHeight: 108,
-                      blurWidth: 108,
-                    }}
-                    type="medium"
-                    bg="bg-white"
-                  >
-                    <p className="text-lg font-light  pt-[120px] text-black z-[2]">
-                      {item.content}
-                    </p>
-                  </CustomContainer>
-                );
-              })}
+            <div className="  w-full   flex justify-center cs-1.9:items-stretch  items-center cs-1.9:flex-row flex-wrap flex-col gap-4">
+              <ServiceBox />
             </div>
           </>
         )}
@@ -122,7 +254,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          " md:w-[383px] w-full h-[330px] flex flex-col  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
+          " md:w-[383px]   w-full h-[330px] flex flex-col mb-auto  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
           bg
         }
       >
@@ -142,15 +274,10 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          "md:w-[383px] w-full h-[551px] flex flex-col   items-center justify-center gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 " +
+          "md:w-[383px] w-full h-[551px] cs-1.9:flex hidden flex-col   items-center justify-center relative gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px] !bg-teal2-500 " +
           "bg"
         }
       >
-        <Image
-          className="absolute left-[18px] top-0"
-          alt="imageToBackground"
-          {...imageToBackground}
-        />
         {children}
       </div>
     );

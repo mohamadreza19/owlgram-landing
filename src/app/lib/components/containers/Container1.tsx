@@ -45,7 +45,7 @@ const Container1: FunctionComponent<Container1Props> = ({
       <div
         ref={observe}
         id={idString}
-        className="max-w-[1440px]  md:px-[127px] px-[18px]  overflow-hidden mx-auto"
+        className="max-w-[1440px] lg:min-w-[1000px]  md:px-[127px] px-[18px]  overflow-hidden mx-auto"
       >
         {childrenCallback({ inView })}
         {/* {children} */}

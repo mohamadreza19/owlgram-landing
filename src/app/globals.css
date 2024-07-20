@@ -41,3 +41,7 @@ html {
     animation: none !important;
   }
 }
+
+.skew {
+  transform: skew(7deg, 2deg);
+}

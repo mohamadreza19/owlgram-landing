@@ -35,27 +35,27 @@ interface IComponent {
 interface IHome extends IntlParamsI {}
 
 const components: IComponent[] = [
-  {
-    component: Experience,
-  },
-  {
-    component: WhyChose,
-  },
+  // {
+  //   component: Experience,
+  // },
+  // {
+  //   component: WhyChose,
+  // },
   {
     component: Services,
   },
-  {
-    component: DownloadApp,
-  },
-  {
-    component: Team,
-  },
-  {
-    component: Faq,
-  },
-  {
-    component: Footer,
-  },
+  // {
+  //   component: DownloadApp,
+  // },
+  // {
+  //   component: Team,
+  // },
+  // {
+  //   component: Faq,
+  // },
+  // {
+  //   component: Footer,
+  // },
 ];
 
 export default function Home({ params }: IHome) {
