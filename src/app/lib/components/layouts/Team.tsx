@@ -1,9 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
 
-import person1 from "/public/asset/banner/person1.png";
-import person2 from "/public/asset/banner/person2.png";
-import person3 from "/public/asset/banner/person3.png";
-import person4 from "/public/asset/banner/person4.png";
 import Image from "next/image";
 import { Container1 } from "../containers";
 import { SegmentComponentProps, Team } from "../../shared";
@@ -12,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { useQuery } from "@tanstack/react-query";
 import { ApiCallService, useDirection, useLocale } from "../../services";
+import TeamSlider from "../TeamSlider";
 
 interface TeamProps extends SegmentComponentProps {}
 
@@ -38,7 +35,13 @@ const TeamCom: FunctionComponent<TeamProps> = ({ ...rest }) => {
                 {t("team.paragraph1")}
               </p>
             </section>
-            <section className="flex  flex-wrap gap-4  justify-center items-center pt-16 relative">
+            <section className="sm:block hidden pt-16 mim-w-[1024px] relative">
+              <TeamSlider
+                data={data ? data.concat(data) : []}
+                inView={inView}
+              />
+            </section>
+            <section className=" sm:hidden flex flex-wrap gap-4  justify-center items-center pt-16 relative">
               {data &&
                 data.map((team, index) => {
                   return (
