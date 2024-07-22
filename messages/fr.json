@@ -1,83 +1,97 @@
 {
   "index": {
     "app-header": {
-      "HomePage": "صفحه اصلی",
-      "AboutOwlegram": "درباره Owlegram",
-      "Services": "خدمات",
-      "Download": "دانلود",
-      "Team": "تیم",
-      "FAQ": "سوالات متداول",
-      "Contact": "تماس"
+      "HomePage": "Page d'accueil",
+      "AboutOwlegram": "À propos d'Owlegram",
+      "Services": "Services",
+      "Download": "Télécharger",
+      "Team": "Équipe",
+      "FAQ": "FAQ",
+      "Contact": "Contact"
     },
     "experience": {
-      "UnitedArabEmirates": "امارات متحده عربی",
-      "UseOurNewPlatform": "بال‌های یک پرنده هوشمند و قدرتمند",
-      "forBetter": "یک اکوسیستم جامع به نام",
+      "UnitedArabEmirates": "Émirats Arabes Unis",
+      "UseOurNewPlatform": "les ailes d'un oiseau intelligent et puissant",
+      "forBetter": "Un écosystème complet nommé",
       "experience": "OWLEGRAM",
-      "paragraph1": "دنیایی از فرصت‌ها و امکانات بی‌پایان برای تمام مردم جهان، با هم"
+      "paragraph1": "Un monde d'opportunités et un monde de possibilités pour tous les habitants du monde, ensemble"
     },
     "why-chose": {
-      "onePlatformForAll": "آیا گوشی هوشمند دارید؟",
-      "whyChooseOwlegram": "چرا Owlegram را انتخاب کنید؟",
-      "To the home cook": "زیرا Owlegram تمام نیازهای شما را برآورده می‌کند. شما یک نرم‌افزار در گوشی خود دارید که نیازی به نصب هیچ نرم‌افزار دیگری ندارید و می‌توانید نیازهای روزانه خود را برآورده کنید و مهمتر از همه، برای خود شغلی ایجاد کنید و درآمد کسب کنید.",
+      "onePlatformForAll": "Avez-vous un smartphone ?",
+      "whyChooseOwlegram": "Pourquoi choisir Owlegram ?",
+      "To the home cook": "Parce qu'Owlegram répond à tous vos besoins. Vous avez un logiciel sur votre téléphone que vous n'avez pas besoin d'installer d'autres logiciels et vous pouvez répondre à vos besoins quotidiens et, plus important encore, créer un emploi pour vous-même et gagner de l'argent.",
       "service": {
-        "service": "همه چیزهایی که نیاز دارید در یک نرم‌افزار",
-        "paragraph1": "چه خدمتی می‌خواهید، آیا پیام‌رسان‌های قوی می‌خواهید؟ آیا نیاز به شغل دارید؟ تخصص شما چیست؟ آیا نیاز به خرید دستگاه دارید؟ آیا به دنبال خرید یا اجاره ملک یا خودرو هستید؟ آیا نیاز به وسیله نقلیه دارید؟ آیا به دنبال مشاور یا تعمیرکار هستید؟ آیا به دنبال بازی‌ها، فیلم‌ها، سریال‌ها و تئاتر هستید؟ آیا نیاز به کار در فارکس، ارزهای دیجیتال و NFT دارید، آیا به متاورس و امکانات اطراف آن علاقه‌مندید؟ آیا به دنبال آموزش و یادگیری فنی هستید؟ آیا می‌خواهید از شبکه‌های اجتماعی استفاده کنید؟ همه نیازهای شما در Owlegram با ایده‌های منحصر به فرد و متصل به عنوان یک شبکه عصبی موجود است."
+        "service": "Tout ce dont vous avez besoin dans un seul logiciel",
+        "paragraph1": "Quel service voulez-vous, voulez-vous des messagers puissants ? Vous avez besoin d'un emploi ? Quelle est votre spécialité ? Vous avez besoin d'acheter un appareil ? Vous cherchez à acheter ou louer une propriété ou une voiture ? Vous avez besoin d'un moyen de transport ? Vous cherchez un consultant ou un réparateur ? Vous cherchez des jeux, des films, des séries et du théâtre ? Vous avez besoin de travailler dans le forex, la crypto et les NFT, vous êtes intéressé par le Metaverse et ses installations ? Vous cherchez une formation technique et un apprentissage ? Vous voulez utiliser les réseaux sociaux ? Tous vos besoins sont dans Owlegram avec des idées uniques et connectées comme un réseau neuronal."
       },
       "payment": {
-        "payment": "همه پرداخت‌ها با ارز دیجیتال",
-        "paragraph1": "شما می‌توانید پرداخت‌ها و رسیدهای خود را در کیف پول خود در یک محیط امن ذخیره کنید. خرید و فروش با استفاده از ارز انحصاری نرم‌افزار که می‌توان آن را در کیف پول خود ذخیره کرد، شما را پولدار می‌کند و می‌توانید به راحتی آن را به حساب‌های خود در کیف پول‌های دیگر منتقل کنید. این کار به طور کامل بر روی پلتفرم بلاکچین با کمترین هزینه‌ها و هزینه‌های انتقال انجام می‌شود."
+        "payment": "Tous les paiements en Crypto",
+        "paragraph1": "Vous pouvez stocker vos paiements et reçus dans votre propre portefeuille dans un environnement sécurisé. Acheter et vendre en utilisant la monnaie exclusive du logiciel, qui peut être stockée dans votre portefeuille, vous fait gagner de l'argent et vous pouvez facilement le transférer vers vos comptes dans vos autres portefeuilles. Tout cela se fait entièrement sur la plateforme blockchain avec les frais les plus bas et les coûts de transfert."
       },
       "transfer": {
-        "transfer": "انتقال رایگان به هر نقطه از جهان",
-        "paragraph1": "شما می‌توانید به راحتی با همه مردم جهان ارتباط برقرار کنید، هوش مصنوعی نرم‌افزار مخاطب شما را شناسایی می‌کند و مکاتبات شما با آن یا با شما به زبان اصلی شما تبدیل می‌شود. شما می‌توانید به راحتی دوستان مختلفی در سراسر جهان داشته باشید."
+        "transfer": "Transfert gratuit partout dans le monde",
+        "paragraph1": "Vous pouvez facilement communiquer avec toutes les personnes du monde, l'intelligence artificielle du logiciel reconnaît votre contact et votre correspondance avec lui ou avec vous devient votre langue principale. Vous pouvez facilement avoir des amis différents dans le monde entier."
       },
       "Chat&Group": {
-        "Chat&Group": "مدیریت چت و گروه",
-        "paragraph1": "در نرم‌افزار خود، یک پیام‌رسان قدرتمند با ویژگی‌ها و ایده‌های خاص دارید که می‌توانید به راحتی از تمام ویژگی‌های آن استفاده کنید، گروه‌ها یا کانال‌های حرفه‌ای ایجاد کنید، دوستان یا گروه‌های خصوصی داشته باشید که هیچ‌کس به آنها دسترسی ندارد، در اتاق‌های کاملاً امن. و به طور محرمانه با دوستان خود صحبت کنید و هزاران ویژگی جالب و متنوع دیگر در این پیام‌رسان‌ها وجود دارد."
+        "Chat&Group": "Chat & Gestion de Groupe",
+        "paragraph1": "Dans votre logiciel, vous avez un messager puissant avec des fonctionnalités et des idées spéciales que vous pouvez facilement utiliser. Créez des groupes ou des chaînes professionnels, ayez des amis ou des groupes privés auxquels personne n'a accès, dans des salles entièrement sécurisées. Et parlez confidentiellement à vos amis, et il y a des milliers d'autres fonctionnalités intéressantes et variées dans ces messagers."
       },
       "Voice&VideoCall": {
-        "Voice&VideoCall": "تماس صوتی و تصویری",
-        "paragraph1": "در نرم‌افزار خود، می‌توانید به راحتی با دوستان خود تماس‌های صوتی و تصویری برقرار کنید، جلسات چند نفره برگزار کنید، کنفرانس‌های مختلف برگزار کنید، این امکانات در سراسر نرم‌افزار شما و در بخش‌های مورد نیاز استفاده می‌شود. بهترین کیفیت تماس صوتی و تصویری با دنیایی از امکانات در نرم‌افزار شما موجود است."
+        "Voice&VideoCall": "Appels Vocaux & Vidéo",
+        "paragraph1": "Dans votre logiciel, vous pouvez facilement passer des appels audio et vidéo avec vos amis, organiser des réunions à plusieurs personnes, tenir diverses conférences. Ces installations sont utilisées dans tout votre logiciel et dans les sections requises. La meilleure qualité d'appels vocaux et vidéo avec un monde de possibilités est disponible dans votre logiciel."
       },
       "productFeatures": {
-        "productFeatures": "و بسیاری ویژگی‌های جذاب دیگر",
-        "viewMore": "دانلود برنامه"
+        "productFeatures": "Et beaucoup d'autres fonctionnalités attrayantes",
+        "viewMore": "Télécharger l'application"
       },
-      "paragraph1": "برای آشپز خانگی، داشتن قابلمه‌ها و ماهی‌تابه‌های مناسب ضروری است برای یک آشپزخانه که به درستی کار می‌کند. ممکن است بپرسید بهترین قابلمه برای سبزیجات چیست"
+      "paragraph1": "Pour le cuisinier à domicile, avoir les bonnes casseroles et poêles est essentiel pour une cuisine bien équipée. Vous vous demandez peut-être quelle est la meilleure casserole pour les légumes."
     },
     "services": {
-      "owelgramService": "خدمات Owlegram",
-      "paragraph1": "این نرم‌افزار دارای بیش از 70 بسته متنوع و کارآمد برای استفاده شما است، توضیح عمومی برخی از آنها در زیر ارائه خواهد شد. اگر نیاز به دیدن بقیه بسته‌های نرم‌افزار دارید، می‌توانید آن را نصب کنید، قطعاً همه چیزهایی که نیاز دارید را خواهد داشت و می‌تواند به شما بسیار کمک کند."
+      "owelgramService": "Services Owlegram",
+      "paragraph1": "Ce logiciel dispose de plus de 70 forfaits divers et efficaces pour votre usage, une explication générale de certains d'entre eux sera fournie ci-dessous. Si vous avez besoin de voir les autres forfaits logiciels, vous pouvez l'installer, il aura certainement tout ce dont vous avez besoin et il pourra vous aider beaucoup."
     },
     "download-app": {
-      "getTheOwlMobileApp": "نصب اپلیکیشن Owl",
-      "downloadOnThe": "دانلود در",
-      "paragraph1": "با توجه به نوع سیستم عامل گوشی همراه خود، نرم‌افزار را از Google Play یا App Store دانلود و نصب کنید. امیدوارم از استفاده از آن لذت ببرید و با این جغد با دنیایی از امکانات دوست شوید و او یک دوست خوب برای شما باشد."
+      "getTheOwlMobileApp": "Obtenez l'application mobile Owl",
+      "downloadOnThe": "télécharger sur le",
+      "paragraph1": "En fonction du type de système d'exploitation de votre téléphone portable, téléchargez et installez le logiciel depuis Google Play ou App Store. J'espère que vous apprécierez son utilisation et que vous deviendrez ami avec ce gentil hibou avec un monde de possibilités et qu'il sera un bon ami pour vous."
     },
     "team": {
-      "OWLEGRAMTeam": "تیم OWLEGRAM",
-      "paragraph1": "این نرم‌افزار متشکل از یک تیم تولید بسیار بزرگ از جوانان از کشورهای مختلف مانند کره جنوبی، امارات متحده عربی و هند است که به صورت متمرکز و قوی در جهت تولید، توسعه، نگهداری و پشتیبانی آن کار می‌کنند. در زیر می‌توانید مدیران ارشد نرم‌افزار را ببینید، و در آینده، در بخش دیگری، تلاش خواهیم کرد تا همه افرادی که در تولید، نگهداری و پشتیبانی این نرم‌افزار کمک می‌کنند را معرفی کنیم، و در اینجا از همه آنها برای تعهد و تلاششان تشکر می‌کنیم."
+      "OWLEGRAMTeam": "Équipe OWLEGRAM",
+      "paragraph1": "Ce logiciel est composé d'une très grande équipe de production de jeunes de différents pays tels que la Corée du Sud, les Émirats Arabes Unis et l'Inde, qui travaillent de manière centralisée et puissante en direction de sa production, de son développement, de son entretien et de son support. Ci-dessous, vous pouvez voir les principaux gestionnaires du logiciel, et à l'avenir, dans une autre section, nous essaierons de présenter toutes les personnes qui aident à la production, à l'entretien et au support de ce logiciel, et ici nous les remercions tous pour leur engagement et leurs efforts."
     },
     "faq": {
-      "faq": "سوالات متداول",
-      "paragraph1": "سوالات عمومی که می‌تواند راهنمای شما باشد. دستورالعمل‌های جامع‌تری در نرم‌افزار وجود دارد که می‌توانید پس از نصب آن استفاده کنید.",
-      "youHaveDifferentQuestion": "سوال دیگری دارید؟",
-      "text1": "تیم ما به همه سوالات شما پاسخ خواهد داد، ما تضمین می‌کنیم که به سرعت پاسخ دهیم",
-      "text2": "تماس با تیم پشتیبانی"
+      "faq": "Questions fréquemment posées",
+      "paragraph1": "Des questions générales qui peuvent vous guider. Il y a des instructions plus complètes dans le logiciel que vous pouvez utiliser après l'avoir installé.",
+      "youHaveDifferentQuestion": "Vous avez une question différente ?",
+      "text1": "notre équipe répondra à toutes vos questions, nous garantissons une réponse rapide",
+      "text2": "Contacter l'équipe de support"
     },
     "footer": {
-      "1": "راه‌های ارتباط با ما",
-      "2": "تلفن:",
-      "3": "آدرس:",
-      "4": "Owlegram یک برنامه کامل و دوست‌داشتنی برای همه کسانی است که یک گوشی هوشمند دارند، از یک کودک 7 ساله تا یک انسان 100 ساله.",
-      "5": "پیشنهادات و انتقادات خود را برای ما ارسال کنید",
-      "6": "تماس با ما",
-      "7": "©2022 تمام حقوق محفوظ است"
+      "1": "Moyens de communication avec nous",
+      "2": "Téléphone :",
+      "3": "Adresse :",
+      "4": "Owlegram est une application complète et charmante pour tous ceux qui ont un smartphone, de 7 à 100 ans.",
+      "5": "Envoyez-nous vos suggestions et critiques",
+      "6": "Contactez-nous",
+      "7": "©2022 Tous droits réservés"
     },
-    "productTitle": "عنوان محصول",
-    "productDescription": "این توضیحات محصول به زبان انگلیسی است.",
-    "text1": "سلام، مایکل! روزت چطور می‌گذره؟",
-    "text2": "می‌دونی چطور می‌گذره ...."
+    "productTitle": "Titre du produit",
+    "productDescription": "Ceci est la description du produit en anglais.",
+    "text1": "Salut, Micheal ! Comment se passe ta journée ?",
+    "text2": "Tu sais comment ça se passe...",
+    "pic1": "https://owlegram.com:2053/public/main/fr/banner-allService.6ac41ff9.png",
+    "pic2": "https://owlegram.com:2053/public/main/fr/banner-chat.facdb806.png",
+    "pic3": "https://owlegram.com:2053/public/main/fr/banner-check-out-products.c13f2b0a.png",
+    "pic4": "https://owlegram.com:2053/public/main/fr/banner-cripto.d2ed479f.png",
+    "pic5": "https://owlegram.com:2053/public/main/fr/banner-free-transfer.5df653d3.png",
+    "pic6": "https://owlegram.com:2053/public/main/fr/banner-videoCall.ec5f25ad.png",
+    "pic7": "https://owlegram.com:2053/public/main/fr/big-phone.8e1ce3e5.png",
+    "pic8": "https://owlegram.com:2053/public/main/fr/container-1.36de9e35.png",
+    "pic9": "https://owlegram.com:2053/public/main/fr/container-2.bbdb7117.png",
+    "pic10": "https://owlegram.com:2053/public/main/fr/content.5d16a1ad.png",
+    "pic11": "https://owlegram.com:2053/public/main/fr/download-app-chat.9a998ffd.png",
+    "pic12": "https://owlegram.com:2053/public/main/fr/download-app-chat-small.90c4f6d6.png",
+    "pic13": "https://owlegram.com:2053/public/main/fr/frame1.a2a41d20.png",
+    "pic14": "https://owlegram.com:2053/public/main/fr/voice-chat1.dc943471.png"
   }
 }

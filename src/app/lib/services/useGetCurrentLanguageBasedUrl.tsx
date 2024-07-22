@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { FunctionComponent, useEffect, useState } from "react";
-import { locales } from "@/navigation";
+import { Locales, locales } from "@/navigation";
 interface useGetCurrentLanguageBasedUrlProps {}
 
 const useGetCurrentLanguageBasedUrl =
@@ -19,7 +19,7 @@ const useGetCurrentLanguageBasedUrl =
       }
     }, [pathname]);
 
-    return currentLang;
+    return currentLang as Locales;
   };
 
 export default useGetCurrentLanguageBasedUrl;

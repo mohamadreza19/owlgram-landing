@@ -74,43 +74,23 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ ...rest }) => {
                     </div>
                   </Link>
                 ))}
-              {/* <div
-            style={{
-              width: playStore.width,
-              height: playStore.height,
-              backgroundImage: `url('${playStore.src}')`,
-            }}
-            className="pl-[75px] pr-[20px] flex justify-center items-center flex-col"
-          >
-            <p className="text-base font-light">
-              {t("download-app.downloadOnThe")}
-            </p>
-            <p className="text-[21px] font-bold">Google play</p>
-          </div>
-          <div
-            style={{
-              width: appleStore.width,
-              height: appleStore.height,
-              backgroundImage: `url('${appleStore.src}')`,
-            }}
-            className="pl-[75px] pr-[20px] flex justify-center items-center flex-col"
-          >
-            <p className="text-base font-light">Download on the </p>
-            <p className="text-[21px] font-bold">Apple store</p>
-          </div> */}
             </section>
             <section className="w-full flex justify-center relative">
               <Image
                 className="md:block hidden"
                 unoptimized
                 alt="appChat"
-                {...appChat}
+                src={t("pic11")}
+                width={600}
+                height={500}
               />
               <Image
                 className="md:hidden block"
                 unoptimized
                 alt="appChatSmall"
-                {...appChatSmall}
+                src={t("pic12")}
+                width={600}
+                height={800}
               />
               <Image
                 className="absolute md:left-[19%] left-[0%]  top-[28%]"

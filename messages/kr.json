@@ -52,7 +52,7 @@
     },
     "download-app": {
       "getTheOwlMobileApp": "Owl 모바일 앱 받기",
-      "downloadOnThe": "다운로드 에서",
+      "downloadOnThe": "다운로드 위치",
       "paragraph1": "휴대전화 운영체제 유형에 따라 Google Play 또는 App Store에서 소프트웨어를 다운로드하고 설치하십시오. 사용을 즐기시길 바라며, 이 가능성의 세계를 가진 친절한 올빼미와 친구가 되길 바랍니다."
     },
     "team": {
@@ -78,6 +78,20 @@
     "productTitle": "제품 제목",
     "productDescription": "이것은 영어로 된 제품 설명입니다.",
     "text1": "안녕하세요, 마이클! 오늘 하루 어때?",
-    "text2": "알다시피 ...."
+    "text2": "알다시피 ....",
+    "pic1": "https://owlegram.com:2053/public/main/kr/banner-allService.6ac41ff9.png",
+    "pic2": "https://owlegram.com:2053/public/main/kr/banner-chat.facdb806.png",
+    "pic3": "https://owlegram.com:2053/public/main/kr/banner-check-out-products.c13f2b0a.png",
+    "pic4": "https://owlegram.com:2053/public/main/kr/banner-cripto.d2ed479f.png",
+    "pic5": "https://owlegram.com:2053/public/main/kr/banner-free-transfer.5df653d3.png",
+    "pic6": "https://owlegram.com:2053/public/main/kr/banner-videoCall.ec5f25ad.png",
+    "pic7": "https://owlegram.com:2053/public/main/kr/big-phone.8e1ce3e5.png",
+    "pic8": "https://owlegram.com:2053/public/main/kr/container-1.36de9e35.png",
+    "pic9": "https://owlegram.com:2053/public/main/kr/container-2.bbdb7117.png",
+    "pic10": "https://owlegram.com:2053/public/main/kr/content.5d16a1ad.png",
+    "pic11": "https://owlegram.com:2053/public/main/kr/download-app-chat.9a998ffd.png",
+    "pic12": "https://owlegram.com:2053/public/main/kr/download-app-chat-small.90c4f6d6.png",
+    "pic13": "https://owlegram.com:2053/public/main/kr/frame1.a2a41d20.png",
+    "pic14": "https://owlegram.com:2053/public/main/kr/voice-chat1.dc943471.png"
   }
 }

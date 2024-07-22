@@ -58,6 +58,7 @@ const config: Config = {
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
 
+      "cs-0.8": "1341px",
       "cs-1": "1412px",
       "cs-1.9": "1435px",
       "cs-2": "1440px",

@@ -14,23 +14,7 @@
       "UseOurNewPlatform": "the wings of a smart and powerful bird",
       "forBetter": "A comprehensive ecosystem named",
       "experience": "OWLEGRAM",
-      "paragraph1": "A world of opportunity and a world of possibilities for all the people of the world, together",
-      "phone": {
-        "owlCity": "OWL City",
-        "Hello-Mostafa": "Hello-Mostafa",
-        "Welcome-to": "Welcome to",
-        "Have-Question": "Have-Question?",
-        "Accademy-in-OWL": "Accademy in OWL",
-        "E-learing": "E-learing",
-        "Accademy": "Accademy",
-        "Adviser": "Adviser",
-        "Tour": "Tour",
-        "Advertise": "Advertise",
-        "Services": "Services",
-        "Transport": "Transport",
-        "Shop": "Shop",
-        "Real-State": "Real State"
-      }
+      "paragraph1": "A world of opportunity and a world of possibilities for all the people of the world, together"
     },
     "why-chose": {
       "onePlatformForAll": "Do you have a smartphone?",
@@ -94,6 +78,20 @@
     "productTitle": "Product Title",
     "productDescription": "This is the product description in English.",
     "text1": "Hi, Micheal! How your day going?",
-    "text2": "You know how it goes ...."
+    "text2": "You know how it goes ....",
+    "pic1": "https://owlegram.com:2053/public/main/en/banner-allService.6ac41ff9.png",
+    "pic2": "https://owlegram.com:2053/public/main/en/banner-chat.facdb806.png",
+    "pic3": "https://owlegram.com:2053/public/main/en/banner-check-out-products.c13f2b0a.png",
+    "pic4": "https://owlegram.com:2053/public/main/en/banner-cripto.d2ed479f.png",
+    "pic5": "https://owlegram.com:2053/public/main/en/banner-free-transfer.5df653d3.png",
+    "pic6": "https://owlegram.com:2053/public/main/en/banner-videoCall.ec5f25ad.png",
+    "pic7": "https://owlegram.com:2053/public/main/en/big-phone.8e1ce3e5.png",
+    "pic8": "https://owlegram.com:2053/public/main/en/container-1.36de9e35.png",
+    "pic9": "https://owlegram.com:2053/public/main/en/container-2.bbdb7117.png",
+    "pic10": "https://owlegram.com:2053/public/main/en/content.5d16a1ad.png",
+    "pic11": "https://owlegram.com:2053/public/main/en/download-app-chat.9a998ffd.png",
+    "pic12": "https://owlegram.com:2053/public/main/en/download-app-chat-small.90c4f6d6.png",
+    "pic13": "https://owlegram.com:2053/public/main/en/frame1.a2a41d20.png",
+    "pic14": "https://owlegram.com:2053/public/main/en/voice-chat1.dc943471.png"
   }
 }

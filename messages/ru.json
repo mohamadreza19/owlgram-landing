@@ -52,7 +52,7 @@
     },
     "download-app": {
       "getTheOwlMobileApp": "Получить мобильное приложение Owl",
-      "downloadOnThe": "скачать на",
+      "downloadOnThe": "скачать На",
       "paragraph1": "В зависимости от типа операционной системы вашего мобильного телефона, загрузите и установите программное обеспечение из Google Play или App Store. Надеюсь, вам понравится использование этого приложения, и вы станете друзьями с этой доброй совой, обладающей миром возможностей, и она станет для вас хорошим другом."
     },
     "team": {
@@ -78,6 +78,20 @@
     "productTitle": "Название продукта",
     "productDescription": "Это описание продукта на английском языке.",
     "text1": "Привет, Майкл! Как проходит твой день?",
-    "text2": "Ты знаешь, как это бывает..."
+    "text2": "Ты знаешь, как это бывает...",
+    "pic1": "https://owlegram.com:2053/public/main/ru/banner-allService.6ac41ff9.png",
+    "pic2": "https://owlegram.com:2053/public/main/ru/banner-chat.facdb806.png",
+    "pic3": "https://owlegram.com:2053/public/main/ru/banner-check-out-products.c13f2b0a.png",
+    "pic4": "https://owlegram.com:2053/public/main/ru/banner-cripto.d2ed479f.png",
+    "pic5": "https://owlegram.com:2053/public/main/ru/banner-free-transfer.5df653d3.png",
+    "pic6": "https://owlegram.com:2053/public/main/ru/banner-videoCall.ec5f25ad.png",
+    "pic7": "https://owlegram.com:2053/public/main/ru/big-phone.8e1ce3e5.png",
+    "pic8": "https://owlegram.com:2053/public/main/ru/container-1.36de9e35.png",
+    "pic9": "https://owlegram.com:2053/public/main/ru/container-2.bbdb7117.png",
+    "pic10": "https://owlegram.com:2053/public/main/ru/content.5d16a1ad.png",
+    "pic11": "https://owlegram.com:2053/public/main/ru/download-app-chat.9a998ffd.png",
+    "pic12": "https://owlegram.com:2053/public/main/ru/download-app-chat-small.90c4f6d6.png",
+    "pic13": "https://owlegram.com:2053/public/main/ru/frame1.a2a41d20.png",
+    "pic14": "https://owlegram.com:2053/public/main/ru/voice-chat1.dc943471.png"
   }
 }

@@ -61,7 +61,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
               <ImageContainer
                 width={Banner2.width}
                 height={Banner2.height}
-                src={Banner2.src}
+                src={t("pic1")}
                 type="medium"
               >
                 <div className="pt-[24px] ps-[40px] pe-[27px]">
@@ -76,7 +76,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
               <ImageContainer
                 width={Banner1.width}
                 height={Banner1.height}
-                src={Banner1.src}
+                src={t("pic4")}
                 type="medium"
               >
                 <div className="lg:pt-[273px] pt-[170px] ps-[40px] pe-[27px]">
@@ -92,7 +92,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
             <ImageContainer
               width={Banner3.width}
               height={Banner3.height}
-              src={Banner3.src}
+              src={t("pic5")}
               className={`w-full cs-2:block hidden !min-w-full h-[296px]  animate__animated animation-delay-1000 ${
                 inView && "animate__fadeInUp"
               }`}
@@ -111,7 +111,7 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
               type="long"
               width={Banner3Mobile.width}
               height={Banner3Mobile.height}
-              src={Banner3Mobile.src}
+              src={t("pic13")}
               className={`w-full mx-auto  cs-2:hidden  !min-w-full   animate__animated animation-delay-1000 ${
                 inView && "animate__fadeInUp"
               }`}
@@ -134,9 +134,9 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
             >
               <ImageContainer
                 type="small"
-                width={Banner6.width}
-                height={Banner6.height}
-                src={Banner6.src}
+                width={383}
+                height={300}
+                src={t("pic2")}
                 className=" max-w-[383px]  max-h-[300px]"
               >
                 <div className="lg:pt-[131px] pt-[149px]  px-[14px] ">
@@ -190,9 +190,9 @@ const WhyChose: FunctionComponent<WhyChoseProps> = ({ ...rest }) => {
 
               <ImageContainer
                 type="small"
-                width={Banner4.width}
-                height={Banner4.height}
-                src={Banner4.src}
+                width={383}
+                height={300}
+                src={t("pic6")}
                 className=" max-w-[383px]  max-h-[300px] pt-[131px]  px-[14px] mx-auto cs-2:translate-x-0  lg:translate-x-1/2   translate-x-0"
               >
                 <Image

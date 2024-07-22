@@ -1,36 +1,32 @@
+"use clinet";
 import { FunctionComponent } from "react";
 import { Team, TeamsResponse } from "../shared";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
+import { useGetCurrentLanguageBasedUrl, useLocale } from "../services";
 interface TeamSliderProps {
   data: TeamsResponse | undefined;
   inView: boolean;
 }
 
 const TeamSlider: FunctionComponent<TeamSliderProps> = ({ data, inView }) => {
+  const locale = useGetCurrentLanguageBasedUrl({});
+
   return (
     <Swiper
       direction="horizontal"
-      //   virtual
+      dir="ltr"
       className="w-full"
       spaceBetween={16}
-      slidesPerView={4}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      slidesPerView={"auto"}
       modules={[Autoplay]}
       freeMode
-      autoplay
-      breakpoints={{
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-        },
-        1341: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-        },
+      touchReleaseOnEdges
+      autoplay={{
+        delay: 3000,
+        reverseDirection: locale == "ar" || locale == "fa" ? true : false,
       }}
     >
       {data &&

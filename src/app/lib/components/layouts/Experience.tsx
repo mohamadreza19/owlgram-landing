@@ -20,6 +20,9 @@ import { useQuery } from "@tanstack/react-query";
 const Experience: FunctionComponent<ExperienceProps> = ({ ...rest }) => {
   const t = useTranslations("index");
   const currentLang = useGetCurrentLanguageBasedUrl({});
+
+  currentLang;
+  console.log(currentLang);
   const { data: userData } = useQuery({
     queryKey: ["userData", currentLang],
     queryFn: () => ApiCallService.getUserInfo(),
@@ -76,13 +79,12 @@ const Experience: FunctionComponent<ExperienceProps> = ({ ...rest }) => {
             </section>
             <section className="w-full pt-4 flex flex-col items-center  relative ">
               <div className="w-fit relative">
-                <Image unoptimized {...BigPhone} alt="big-phone" />
-                {/* <p className="absolute text-[#343A43] text-[19px] font-bold skew left-[114px] bottom-[420px]">
-                  {t("experience.phone.owlCity")}
-                </p>
-                <p className="absolute text-[#343A43] text-[19px] font-bold skew left-[114px] bottom-[320px]">
-                  {t("experience.phone.Hello-Mostafa")}
-                </p> */}
+                <Image
+                  width={465}
+                  height={773}
+                  src={t("pic7")}
+                  alt="big-phone"
+                />
               </div>
 
               <div
@@ -90,7 +92,6 @@ const Experience: FunctionComponent<ExperienceProps> = ({ ...rest }) => {
                 className={`absolute right-[17%] w-[265px] h-[57px] flex items-center justify-center   bg-no-repeat bg-cover drop-shadow-xl text-sm`}
               >
                 <AnimatedText text={t("text1")} delay={100} />
-                {/* {t("text1")} */}
               </div>
               <div
                 style={{ backgroundImage: `url(${container_2.src})` }}

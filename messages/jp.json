@@ -52,7 +52,7 @@
     },
     "download-app": {
       "getTheOwlMobileApp": "Owlモバイルアプリを入手",
-      "downloadOnThe": "ダウンロード",
+      "downloadOnThe": "ダウンロードで",
       "paragraph1": "携帯電話のオペレーティングシステムの種類に応じて、Google PlayまたはApp Storeからソフトウェアをダウンロードしてインストールしてください。使用を楽しんでいただき、この世界の可能性を持つ親切なフクロウと友達になり、良い友達になることを願っています。"
     },
     "team": {
@@ -78,6 +78,20 @@
     "productTitle": "製品タイトル",
     "productDescription": "これは英語の製品説明です。",
     "text1": "こんにちは、マイケル！今日はどうですか？",
-    "text2": "いつもの通りだよ...."
+    "text2": "いつもの通りだよ....",
+    "pic1": "https://owlegram.com:2053/public/main/jp/banner-allService.6ac41ff9.png",
+    "pic2": "https://owlegram.com:2053/public/main/jp/banner-chat.facdb806.png",
+    "pic3": "https://owlegram.com:2053/public/main/jp/banner-check-out-products.c13f2b0a.png",
+    "pic4": "https://owlegram.com:2053/public/main/jp/banner-cripto.d2ed479f.png",
+    "pic5": "https://owlegram.com:2053/public/main/jp/banner-free-transfer.5df653d3.png",
+    "pic6": "https://owlegram.com:2053/public/main/jp/banner-videoCall.ec5f25ad.png",
+    "pic7": "https://owlegram.com:2053/public/main/jp/big-phone.8e1ce3e5.png",
+    "pic8": "https://owlegram.com:2053/public/main/jp/container-1.36de9e35.png",
+    "pic9": "https://owlegram.com:2053/public/main/jp/container-2.bbdb7117.png",
+    "pic10": "https://owlegram.com:2053/public/main/jp/content.5d16a1ad.png",
+    "pic11": "https://owlegram.com:2053/public/main/jp/download-app-chat.9a998ffd.png",
+    "pic12": "https://owlegram.com:2053/public/main/jp/download-app-chat-small.90c4f6d6.png",
+    "pic13": "https://owlegram.com:2053/public/main/jp/frame1.a2a41d20.png",
+    "pic14": "https://owlegram.com:2053/public/main/jp/voice-chat1.dc943471.png"
   }
 }
