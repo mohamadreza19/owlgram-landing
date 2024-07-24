@@ -213,9 +213,9 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
       <div className="flex items-center gap-x-2 relative hover:bg-white">
         {/* <selectBox> */}
         <div
-          className={`transition-opacity delay-300 md:opacity-0  md:hidden grid grid-cols-3 ${
+          className={`transition-opacity delay-300 md:opacity-0 overflow-hidden  md:hidden grid grid-cols-3 ${
             openBox && "!opacity-100 !flex"
-          } md:absolute relative min-w-full md:flex-col flex-wrap backdrop-blur-xl md:bg-white/30  bg-gray2-300 top-full md:ps-4 md:pe-5 py-3 rounded-lg border border-solid md:border-gray-300`}
+          } md:absolute relative min-w-full md:flex-col flex-wrap backdrop-blur-xl   bg-gray2-300 top-full md:py-0  py-3 rounded-lg border border-solid md:border-gray-300`}
         >
           {options.map((flag, i2) => (
             <Selecteditem
@@ -223,6 +223,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
               isActive={handleActiveLanguage(flag.title)}
               onClick={() => {}}
               {...flag}
+              className="w-100 flex justify-center"
             />
           ))}
         </div>
@@ -231,7 +232,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
           <Selecteditem
             sectionClassName="!w-fit !h-fit"
             isActive={false}
-            className="md:inline hidden !w-fit !h-fit"
+            className="md:flex hidden !w-fit !h-fit"
             onClick={handleToggleOpenBox}
             {...selectedLocale}
           />
@@ -261,26 +262,26 @@ const Selecteditem: FunctionComponent<Selecteditem> = ({
   isActive,
 }) => {
   return (
-    <Link href="/" locale={String(title).toLowerCase()} className={className}>
-      <section
-        onClick={onClick}
-        className={` ${sectionClassName}
-          ${
-            isActive &&
-            "md:!bg-transparent bg-white rounded-[7px] md:shadow-none shadow"
-          }
-        md:w-fit  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer md:hover:scale-110 transition-all`}
-      >
-        <Image
-          className="rounded-full min-w-4 min-h-4 max-w-4 max-h-4 object-fill"
-          src={flag}
-          width={16}
-          height={16}
-          alt="flag"
-          unoptimized
-        />
-        <p className="text-lg font-semibold">{title}</p>
-      </section>
+    <Link
+      onClick={onClick}
+      href="/"
+      locale={String(title).toLowerCase()}
+      className={
+        `${sectionClassName}
+          ${isActive && " bg-white rounded-[7px] md:shadow-none shadow"}
+        md:w-full  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer md:hover:scale-110 transition-all ` +
+        className
+      }
+    >
+      <Image
+        className="rounded-full min-w-4 min-h-4 max-w-4 max-h-4 object-fill"
+        src={flag}
+        width={16}
+        height={16}
+        alt="flag"
+        unoptimized
+      />
+      <p className="text-lg font-semibold">{title}</p>
     </Link>
   );
 };
