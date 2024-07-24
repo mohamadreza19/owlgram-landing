@@ -92,10 +92,10 @@ const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
                   blurHeight: 108,
                   blurWidth: 108,
                 }}
-                type="medium"
+                type={index == 1 ? "small" : "medium"}
                 bg="bg-white"
               >
-                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                <p className="text-lg font-light  text-black z-[2]">
                   {item.content}
                 </p>
               </CustomContainer>
@@ -120,7 +120,7 @@ const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
                     type="medium"
                     bg="bg-white"
                   >
-                    <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                    <p className="text-lg font-light  text-black z-[2]">
                       {item.content}
                     </p>
                   </CustomContainer>
@@ -159,7 +159,7 @@ const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
                   type="medium"
                   bg="bg-white"
                 >
-                  <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                  <p className="text-lg font-light  text-black z-[2]">
                     {item.content}
                   </p>
                 </CustomContainer>
@@ -179,10 +179,10 @@ const Services: FunctionComponent<ServicesProps> = ({ ...rest }) => {
                   blurHeight: 108,
                   blurWidth: 108,
                 }}
-                type="medium"
+                type={index == 0 ? "small" : "medium"}
                 bg="bg-white"
               >
-                <p className="text-lg font-light  pt-[120px] text-black z-[2]">
+                <p className="text-lg font-light   text-black z-[2]">
                   {item.content}
                 </p>
               </CustomContainer>
@@ -238,23 +238,7 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
     return (
       <div
         className={
-          " md:w-[383px] w-full h-[216px] flex justify-center items-center gap-x-[28px] rounded-[20px] relative ps-[19px] pe-[15px] " +
-          bg
-        }
-      >
-        <Image
-          className="absolute -right-1 top-3"
-          alt="imageToBackground"
-          {...imageToBackground}
-        />
-        {children}
-      </div>
-    );
-  if (type === "medium")
-    return (
-      <div
-        className={
-          " md:w-[383px]   w-full h-[330px] flex flex-col mb-auto  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
+          " md:w-[383px]   w-full h-[216px] flex flex-col mb-auto  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
           bg
         }
       >
@@ -267,7 +251,26 @@ const CustomContainer: FunctionComponent<CustomContainerProps> = ({
           />
         </div>
 
-        {children}
+        <div className="absolute w-full ps-[115px] pe-[20px]"> {children}</div>
+      </div>
+    );
+  if (type === "medium")
+    return (
+      <div
+        className={
+          " md:w-[383px]   w-full h-[330px]  flex flex-col mb-auto  items-start gap-x-[28px] rounded-[20px] relative pt-[23px] ps-[19px] pe-[15px]  overflow-hidden " +
+          bg
+        }
+      >
+        <div className="flex justify-between w-full absolute">
+          <Image className="" alt="imageToBackground" {...imageToBackground} />
+          <Image
+            className="me-6 relative bottom-4  grayscale opacity-[0.10] scale-[2.3]"
+            alt="imageToBackground"
+            {...imageToBackground}
+          />
+        </div>
+        <div className="pt-[120px]">{children}</div>
       </div>
     );
   if (type === "big")
