@@ -43,14 +43,14 @@ const DownloadApp: FunctionComponent<DownloadAppProps> = ({ ...rest }) => {
         <>
           <div className="flex pt-52 flex-col md:pb-0 pb-8">
             <section
-              className={`mx-auto md:w-[1024px] w-full flex flex-col items-center animate__animated ${
+              className={`mx-auto  w-full flex flex-col items-center animate__animated ${
                 inView && "animate__bounce"
               }`}
             >
               <div className="font-bold text-[48px] md:text-nowrap text-center">
                 {t("download-app.getTheOwlMobileApp")}
               </div>
-              <div className="pt-5 text-center leading-10 ">
+              <div className="pt-5 text-center leading-10 md:w-[1024px]">
                 {t("download-app.paragraph1")}
               </div>
             </section>

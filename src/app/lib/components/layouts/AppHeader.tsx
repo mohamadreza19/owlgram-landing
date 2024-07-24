@@ -213,9 +213,9 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
       <div className="flex items-center gap-x-2 relative hover:bg-white">
         {/* <selectBox> */}
         <div
-          className={`transition-opacity delay-300 md:opacity-0 overflow-hidden  md:hidden grid grid-cols-3 ${
+          className={`transition-opacity delay-300 md:opacity-0 overflow-hidden px-1 md:hidden grid grid-cols-3 ${
             openBox && "!opacity-100 !flex"
-          } md:absolute relative min-w-full md:flex-col flex-wrap backdrop-blur-xl   bg-gray2-300 top-full md:py-0  py-3 rounded-lg border border-solid md:border-gray-300`}
+          } md:absolute relative min-w-full md:flex-col flex-wrap backdrop-blur-xl   bg-gray2-300 top-full  md:px-3  py-3 rounded-lg border border-solid md:border-gray-300`}
         >
           {options.map((flag, i2) => (
             <Selecteditem
@@ -223,7 +223,7 @@ const LanguageSelectBox: FunctionComponent<LanguageSelectBoxProps> = ({
               isActive={handleActiveLanguage(flag.title)}
               onClick={() => {}}
               {...flag}
-              className="w-100 flex justify-center"
+              className="w-100 flex justify-center mx-auto"
             />
           ))}
         </div>
@@ -268,8 +268,11 @@ const Selecteditem: FunctionComponent<Selecteditem> = ({
       locale={String(title).toLowerCase()}
       className={
         `${sectionClassName}
-          ${isActive && " bg-white rounded-[7px] md:shadow-none shadow"}
-        md:w-full  w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer md:hover:scale-110 transition-all ` +
+          ${
+            isActive &&
+            "md:!bg-transparent bg-white border-b-[3px]  rounded-[7px] md:shadow-none shadow"
+          }
+        md:w-full   w-[104px] md:h-fit h-[43px] flex items-center justify-center gap-x-1 cursor-pointer border-solid border-teal2-400 md:hover:border-b-[3px]  rounded-[7px] transition-all ` +
         className
       }
     >
